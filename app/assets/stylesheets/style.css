@@ -1,0 +1,388 @@
+/*
+ *  * Globals
+ *   */
+
+/* Links */
+a,
+a:focus,
+a:hover,
+a:visited
+ {
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+/*
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #081e3b;
+}
+
+.navbar-toggle:hover > .icon-bar {
+    background-color: #f9f0dc;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #f9f0dc;
+}
+*/
+/*
+ *  * Base structure
+ *   */
+
+html,
+body {
+  width: 94%;
+  background-color: white; 
+  font-family: "メイリオ", "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+  color: black;
+  margin: auto;
+//  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Beech_seedling.jpg/480px-Beech_seedling.jpg');
+}
+
+p {
+  font-size: 15px;
+}
+
+.panel-default>.panel-heading {
+    color: #04F59C;
+    background-color: black;
+    border-color: #ddd;
+}
+
+.navbar-default .navbar-brand {
+    color: #02FFD0;
+}
+
+input, text, textarea, select {
+  color: black;
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+img {
+  width: 98%;
+}
+/*
+ *  * Header
+ *   */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* custom bootstrap dropdown-menu */
+.dropdown-menu {
+  background-color: #000;
+}
+
+.dropdown-menu > li > a {
+  color: #fff;
+}
+
+div.trimming {
+  width: 106px;
+  height: 106px;
+  overflow: hidden;
+}
+
+div.trimming > img {
+  width: 98%;
+  height: 98%;
+}
+
+
+@media (min-width: 450px) {
+  div.trimming {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  div.trimming > img {
+    width: 98%;
+    height: 98%;
+  }
+
+}
+
+
+@media (min-width: 768px) {
+  img {
+    max-width: 600px;
+  }
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+  div.trimming {
+   width: 200px;
+   height:200px;
+   overflow: hidden;
+  }
+
+  div.trimming > img {
+   width: 98%;
+   height: 98%;
+  }
+
+
+}
+
+
+/*
+ *  * Cover
+ *   */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+
+/*
+ *  * Footer
+ *   */
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+}
+
+
+/*
+ *  * Affix and center
+ *   */
+
+@media (min-width: 768px) 
+ /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+  img {
+    max-width: 800px;
+  }
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 700px;
+  }
+  div.trimming {
+   width: 200px;
+   height:200px;
+   overflow: hidden;
+  }
+
+  div.trimming > img {
+   width: 98%;
+   height: 98%;
+  }
+
+
+}
+
+.collapse.in {
+    display: block;
+    visibility: visible;
+//    background-color: black;
+}
+
+.navbar-default {
+    border-color: #e7e7e7;
+//    background-color: black;
+}
+}
+
+/* iframe要素内でサイズ指定している場合は必要なし */
+.iframe {
+  width: 560px;
+  height: 315px;
+}
+
+/*for prettify look
+body {
+    padding: 1em;
+}
+*/
+
+
+#container { 
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+  -webkit-animation-fill-mode: both; 
+  animation-fill-mode: both; 
+} 
+@-webkit-keyframes fadeInUp { 
+  0% { 
+    opacity: 0; 
+    -webkit-transform: translateY(20px); 
+  } 
+  100% { 
+    opacity: 1; 
+    -webkit-transform: translateY(0); 
+  } 
+} 
+@keyframes fadeInUp { 
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  } 
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  } 
+} 
+.fadeInUp { 
+  -webkit-animation-name: fadeInUp; 
+  animation-name: fadeInUp; 
+}
+
+.col-md-3, .col-xs-4 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.navbar {
+    margin-bottom: 5px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.container{
+  padding-right: 7px;
+  padding-left: 7px;
+  padding-top: 7px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+html{
+    width: 100%;
+}
+p > img{
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.lazy{
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+div.dev > div > img{
+ margin-bottom: 20px;
+}
+
+
+.label {
+  color: black;
+}
+
+
+.fa-green:before
+{
+  color: green ;
+}
+.fa-orange:before
+{
+  color: orange ;
+}

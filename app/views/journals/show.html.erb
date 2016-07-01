@@ -1,0 +1,60 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @journal.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @journal.content %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= link_to @journal.project.title, @journal.project %>
+</p>
+
+<p>
+  <strong>Issue:</strong>
+  <%= link_to @journal.issue.subject, @journal.issue %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @journal.distance %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @journal.time.strftime("%H:%M:%S") %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @journal.date %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @journal.place %>
+</p>
+
+<p>
+  <strong>Move:</strong>
+<% for move in @journal.moves %>
+<%= link_to move.distance, move %>
+<%= link_to move.transportation, move %>
+<% end %>
+</p>
+
+<p>
+  <strong>Open range:</strong>
+  <%= @journal.open_range.title %>
+</p>
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_journal_path(@journal) %> |
+<% end %>
+<%= link_to 'Back', journals_path %>
+</div>

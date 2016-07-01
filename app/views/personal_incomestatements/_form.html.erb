@@ -1,0 +1,96 @@
+<%= form_for(@personal_incomestatement) do |f| %>
+  <% if @personal_incomestatement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@personal_incomestatement.errors.count, "error") %> prohibited this personal_incomestatement from being saved:</h2>
+
+      <ul>
+      <% @personal_incomestatement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :car_loan %><br>
+    <%= f.number_field :car_loan %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :lower %><br>
+    <%= f.number_field :lower %>
+  </div>
+  <div class="field">
+    <%= f.label :credit %><br>
+    <%= f.number_field :credit %>
+  </div>
+  <div class="field">
+    <%= f.label :shopping_loan %><br>
+    <%= f.number_field :shopping_loan %>
+  </div>
+  <div class="field">
+    <%= f.label :yokoi_info %><br>
+    <%= f.number_field :yokoi_info %>
+  </div>
+  <div class="field">
+    <%= f.label :friend %><br>
+    <%= f.number_field :friend %>
+  </div>
+  <div class="field">
+    <%= f.label :family %><br>
+    <%= f.number_field :family %>
+  </div>
+  <div class="field">
+    <%= f.label :health_care %><br>
+    <%= f.number_field :health_care %>
+  </div>
+  <div class="field">
+    <%= f.label :basic_costs %><br>
+    <%= f.number_field :basic_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :clothes_costs %><br>
+    <%= f.number_field :clothes_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :reisure_costs %><br>
+    <%= f.number_field :reisure_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :ironamn_costs %><br>
+    <%= f.number_field :ironman_costs %>
+  <div class="field">
+    <%= f.label :car_tax %><br>
+    <%= f.number_field :car_tax %>
+  </div>
+  <div class="field">
+    <%= f.label :car_insurance %><br>
+    <%= f.number_field :car_insurance %>
+  </div>
+  <div class="field">
+    <%= f.label :social_insurance %><br>
+    <%= f.number_field :social_insurance %>
+  </div>
+  <div class="field">
+    <%= f.label :life_insurance %><br>
+    <%= f.number_field :life_insurance %>
+  </div>
+  <div class="field">
+    <%= f.label :housing_costs %><br>
+    <%= f.number_field :housing_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :income_tax %><br>
+    <%= f.number_field :income_tax %>
+  </div>
+  <div class="field">
+    <%= f.label :saraly %><br>
+    <%= f.number_field :saraly %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

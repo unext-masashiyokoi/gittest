@@ -1,0 +1,103 @@
+<style type="text/css">
+
+table.table-headerfixed{
+  table-layout: fixed;
+}
+
+table.table-headerfixed thead,
+table.table-headerfixed tbody{
+    display: block;
+    width: 3000px;
+}
+
+table.table-headerfixed tbody {
+    height: 600px;
+    width: 3000px;
+    overflow-y: scroll;
+}
+table.table-headerfixed th, td{
+  width: 80px;
+}
+
+</style>
+                          <table class="table table-headerfixed">
+                            <thead>
+                              <tr>
+      <th>Total costs</th>
+      <th>Saraly</th>
+      <th>Date</th>
+      <th>Partner</th>
+      <th>Car loan</th>
+      <th>Lower</th>
+      <th>Credit</th>
+      <th>Shop loan</th>
+      <th>Yokoi info</th>
+      <th>Friend</th>
+      <th>Family</th>
+      <th>Health care</th>
+      <th>Basic costs</th>
+      <th>Clothes costs</th>
+      <th>Reisure costs</th>
+      <th>ironman costs</th>
+      <th>Car tax</th>
+      <th>Car insu</th>
+      <th>Social insu</th>
+      <th>Life insu</th>
+      <th>Housing costs</th>
+      <th>Income tax</th>
+      <th>Total costs</th>
+      <th colspan="3"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+<% @personal_incomestatements.each_with_index do |personal_incomestatement, index| %>
+                                <tr>
+        <td><%= personal_incomestatement.cost_sum %></td>
+        <td><%= personal_incomestatement.saraly %></td>
+        <td><%= personal_incomestatement.date.strftime("%Y-%m") %></td>
+        <td><%= personal_incomestatement.partner %></td>
+        <td><%= personal_incomestatement.car_loan %></td>
+        <td><%= personal_incomestatement.lower %></td>
+        <td><%= personal_incomestatement.credit %></td>
+        <td><%= personal_incomestatement.shopping_loan %></td>
+        <td><%= personal_incomestatement.yokoi_info %></td>
+        <td><%= personal_incomestatement.friend %></td>
+        <td><%= personal_incomestatement.family %></td>
+        <td><%= personal_incomestatement.health_care %></td>
+        <td><%= personal_incomestatement.basic_costs %></td>
+        <td><%= personal_incomestatement.clothes_costs %></td>
+        <td><%= personal_incomestatement.reisure_costs %></td>
+        <td><%= personal_incomestatement.ironman_costs %></td>
+        <td><%= personal_incomestatement.car_tax %></td>
+        <td><%= personal_incomestatement.car_insurance %></td>
+        <td><%= personal_incomestatement.social_insurance %></td>
+        <td><%= personal_incomestatement.life_insurance %></td>
+        <td><%= personal_incomestatement.housing_costs %></td>
+        <td><%= personal_incomestatement.income_tax %></td>
+        <td><%= personal_incomestatement.cost_sum %></td>
+        <td><%= link_to 'Show', personal_incomestatement %></td>
+        <td><%= link_to 'Edit', edit_personal_incomestatement_path(personal_incomestatement) %></td>
+        <td><%= link_to 'Destroy', personal_incomestatement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                β TEST
+            </div>
+            <div>
+                <strong>Copyright</strong> yokoi info com inc. &copy; 2015
+            </div>
+        </div>
+    </div>

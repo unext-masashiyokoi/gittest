@@ -1,0 +1,94 @@
+<div id="wrapper">
+  <%= render 'layouts/sidebar' %>
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> Log out
+                            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-center m-t-lg">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          runs
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                          <table class="table table-condensed">
+                              <tr>
+                                    <th>
+                                      date
+                                    </th>
+                                    <th>
+                                      title
+                                    </th>
+                                    <th>
+                                      distance
+                                    </th>
+                                    <th>
+                                      time
+                                    </th>
+                                    <th>
+                                      place
+                                    </th>
+                                    <th>
+                                      content
+                                    </th>
+                              </tr>
+                              <tbody>
+                                    <% @journals_run.each do |journal_run| %>
+                                      <tr>
+                                        <td><%= journal_run.date %></td>
+                                        <td><%= journal_run.title %></td>
+                                        <td><%= journal_run.distance %></td>
+                                        <td><%= journal_run.time.strftime("%H:%M:%S") %></td>
+                                        <td><%= journal_run.place %></td>
+                                        <td><%= journal_run.content %></td>
+                                      </tr>  
+                                    <% end %>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                β TEST
+            </div>
+            <div>
+                <strong>Copyright</strong> yokoi info com inc. &copy; 2015
+            </div>
+        </div>
+    </div>
+</div>
+

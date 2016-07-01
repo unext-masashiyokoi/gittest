@@ -1,0 +1,160 @@
+<p id="notice"><%= notice %></p>
+<h1>Listing Equips</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Detail</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Bland</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equips.each do |equip| %>
+      <tr>
+        <td><%= equip.name %></td>
+        <td><%= simple_format(equip.detail, {}, {:sanitize => false}) %></td>
+        <td><%= equip.date %></td>
+        <td><%= equip.status %></td>
+        <td><%= equip.priority %></td>
+        <td><%= equip.bland %></td>
+        <td><%= equip.price %></td>
+        <td><%= link_to 'Show', equip %>
+            <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_equip_path(equip) %>
+        <%= link_to 'Destroy', equip, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</td>
+      </tr>
+    <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= @equips_price_sum %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>detail</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Bland</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equips_not_zero.each do |equip| %>
+      <tr>
+        <td><%= equip.name %></td>
+        <td><%= equip.detail %></td>
+        <td><%= equip.date %></td>
+        <td><%= equip.status %></td>
+        <td><%= equip.priority %></td>
+        <td><%= equip.bland %></td>
+        <td><%= equip.price %></td>
+        <td><%= link_to 'Show', equip %>
+            <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_equip_path(equip) %>
+        <%= link_to 'Destroy', equip, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</td>
+      </tr>
+    <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= @equips_price_sum_not_zero %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>detail</th>
+      <th>image</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Bland</th>
+      <th>genre</th>
+      <th>storelink</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equips_all.each do |equip| %>
+      <tr>
+        <td><%= equip.name %></td>
+        <td><%= simple_format(equip.detail, {}, {:sanitize => false}) %></td>
+        <td><%= image_tag equip.image %></td>
+        <td><%= equip.date %></td>
+        <td><%= equip.status %></td>
+        <td><%= equip.priority %></td>
+        <td><%= equip.bland %></td>
+        <td>        <% for genre in equip.genres %>
+        <%= link_to genre.title, genre %>
+        <% end %>
+        </td>
+        <td><%= simple_format(equip.pr_link, {}, {:sanitize => false}) %></td>
+        <td><%= equip.price %></td>
+        <td><%= link_to 'Show', equip %>
+            <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_equip_path(equip) %>
+        <%= link_to 'Destroy', equip, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</td>
+      </tr>
+    <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= @equips_price_sum_all %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+
+<% if user_signed_in? %>
+<%= link_to 'New Equip', new_equip_path %>
+<% end %>

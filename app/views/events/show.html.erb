@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+<table class="table">
+<tbody>
+<tr>
+  <td>Title:</td>
+  <td><%= @event.title %></td>
+</tr>
+
+<tr>
+  <td>Content:</td>
+  <td><%= @event.content %></td>
+</tr>
+
+<tr>
+  <td>Reference link:</td>
+  <td><%= link_to @event.reference_link, @event.reference_link.to_s %></td>
+</tr>
+
+<tr>
+  <td>Project:</td>
+  <td><%= link_to @event.project.title, @event.project %></td>
+</tr>
+
+<tr>
+  <td>Category:</td>
+  <td><%= link_to @event.category.title, @event.category %></td>
+</tr>
+
+<tr>
+  <td>Start datetime:</td>
+  <td><%= @event.start.strftime('%Y/%m/%d %H:%M')  %></td>
+</tr>
+
+<tr>
+  <td>End datetime:</td>
+  <td><%= @event.end.strftime('%Y/%m/%d %H:%M') %></td>
+</tr>
+
+<tr>
+  <td>Place:</td>
+  <td><%= @event.place %></td>
+</tr>
+
+<tr>
+  <td>Open range:</td>
+  <td><%= @event.open_range.title %></td>
+</tr>
+</tbody>
+</table>
+
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<% end %>
+<%= link_to 'Back', events_path %>

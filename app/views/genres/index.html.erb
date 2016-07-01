@@ -1,0 +1,46 @@
+<div class= "container">
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Genres</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Blogs</th>
+      <th>Equips</th>
+      <th>Sponsor link</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td><%= link_to(genre.title, genre) %></td>
+        <td><%= genre.content %></td>
+        <td>
+        <% for blog in genre.blogs %>
+        <%= link_to blog.title, blog %>
+        <% end %>
+        </td>
+        <td>
+        <% for equip in genre.equips %>
+        <%= link_to equip.name, equip %>
+        <% end %>
+        </td>
+        <td><%= simple_format(genre.sponsor_link, {}, {:sanitize => false}) %></td>
+        <td><% if user_signed_in? %><%= link_to 'Show', genre %>
+        <%= link_to 'Edit', edit_genre_path(genre) %>
+        <%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if user_signed_in? %>
+<%= link_to 'New Genre', new_genre_path %>
+<% end %>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+<meta name=”robots” content=”nofollow”> 
+   <title>KOAGEN β | Main view</title>
+
+    <link href="/assets/application.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Mainly scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/assets/application.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jQueryRotate.js"></script>
+    <script src="/js/jquery.layzyload.min.js"></script>
+    <!-- Custom and plugin javascript -->
+<body ng-app="sampleApp">
+<div class="container animsition">
+<%= render 'layouts/sidebar' %>
+<% if user_signed_in? %>
+<p style="text-shadow: 1px 1px 3px #fff;">こんにちわ<%= link_to current_user.name, username_path(current_user.name) %>さん</p>
+<% end %>
+<%= yield %>
+<%= render 'layouts/footer' %>
+</div>
+</body>
+</html>

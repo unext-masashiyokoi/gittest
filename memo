@@ -1,0 +1,1 @@
+<!--       <p style="height:80px;overflow:hidden;"><%= link_to rm_html_tag(blog.content), blog , class:""%></p> -->

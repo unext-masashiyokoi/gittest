@@ -1,0 +1,93 @@
+<%= form_for(@income_statement) do |f| %>
+  <% if @income_statement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@income_statement.errors.count, "error") %> prohibited this income_statement from being saved:</h2>
+
+      <ul>
+      <% @income_statement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :ses_business_revenue %><br>
+    <%= f.number_field :ses_business_revenue %>
+  </div>
+  <div class="field">
+    <%= f.label :representative_reward %><br>
+    <%= f.number_field :representative_reward %>
+  </div>
+  <div class="field">
+    <%= f.label :personnel_expenses %><br>
+    <%= f.number_field :personnel_expenses %>
+  </div>
+  <div class="field">
+    <%= f.label :sales_support_fee %><br>
+    <%= f.number_field :sales_support_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :social_insurance_costs %><br>
+    <%= f.number_field :social_insurance_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_expense %><br>
+    <%= f.number_field :tax_expense %>
+  </div>
+  <div class="field">
+    <%= f.label :business_tax %><br>
+    <%= f.number_field :business_tax %>
+  </div>
+  <div class="field">
+    <%= f.label :delay_loss %><br>
+    <%= f.number_field :delay_loss %>
+  </div>
+  <div class="field">
+    <%= f.label :communications_expenses %><br>
+    <%= f.number_field :communications_expenses %>
+  </div>
+  <div class="field">
+    <%= f.label :transportation_cost %><br>
+    <%= f.number_field :transportation_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :capital_investment %><br>
+    <%= f.number_field :capital_investment %>
+  </div>
+  <div class="field">
+    <%= f.label :advertising_expenses %><br>
+    <%= f.number_field :advertising_expenses %>
+  </div>
+  <div class="field">
+    <%= f.label :entertainment_expenses %><br>
+    <%= f.number_field :entertainment_expenses %>
+  </div>
+  <div class="field">
+    <%= f.label :affairs_costs %><br>
+    <%= f.number_field :affairs_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :shareholder_costs %><br>
+    <%= f.number_field :shareholder_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :lower_costs %><br>
+    <%= f.number_field :lower_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :debt_costs %><br>
+    <%= f.number_field :debt_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :realestate %><br>
+    <%= f.number_field :realestate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

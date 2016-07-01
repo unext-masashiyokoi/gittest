@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @genre.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @genre.content %>
+</p>
+
+<p>
+  <strong>Blogs:</strong>
+  <% for blog in @genre.blogs %>
+    <%= link_to blog.title, blog %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Equips:</strong>
+  <% for equip in @genre.equips %>
+    <%= link_to equip.name, equip %>
+  <% end %>
+</p>
+
+<p>
+  <strong>sponsor:</strong>
+  <%= simple_format(@genre.sponsor_link, {:style => "width:200px;"}, {:sanitize => false}) %>
+</p>
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_genre_path(@genre) %> |
+<% end %>
+<%= link_to 'Back', genres_path %>

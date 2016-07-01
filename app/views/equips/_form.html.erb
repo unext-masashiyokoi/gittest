@@ -1,0 +1,63 @@
+<%= form_for(@equip) do |f| %>
+  <% if @equip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@equip.errors.count, "error") %> prohibited this equip from being saved:</h2>
+
+      <ul>
+      <% @equip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :detail %><br>
+    <%= f.text_area :detail %>
+  </div>
+  <% for genre in Genre.all %>
+  <div class="field">
+    <%= check_box_tag "equip[genre_ids][]", genre.id, @equip.genres.include?(genre) %>
+    <%= genre.title %>
+  </div>
+  <% end %>
+  <div class=field>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :image_link %><br>
+    <%= f.text_area :image_link %>
+  </div>
+  <div class="field">
+    <%= f.label :pr_link %><br>
+    <%= f.text_area :pr_link %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :bland %><br>
+    <%= f.text_field :bland %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

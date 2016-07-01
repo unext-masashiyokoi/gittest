@@ -1,0 +1,57 @@
+<%= form_for(@journal) do |f| %>
+  <% if @journal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this journal from being saved:</h2>
+
+      <ul>
+      <% @journal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.number_field :cost, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :distance %><br>
+    <%= f.text_field :distance, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= f.select :project_id, Project.all.map{|t| [t.title, t.id]}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :issue_id %><br>
+    <%= f.select :issue_id, Issue.all.map{|t| [t.subject, t.id]}, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.time_select :time, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br>
+    <%= f.text_field :place, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :open_range_id %><br>
+    <%= f.text_field :open_range_id, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "form-control"%>
+  </div>
+<% end %>

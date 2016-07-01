@@ -1,0 +1,123 @@
+<style>
+html{
+  background-color: black;
+}
+
+.container{
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Beech_seedling.jpg/480px-Beech_seedling.jpg');
+  opacity: 0.3;
+//  background-size:100%, auto;
+  height:800px;
+
+}
+
+@media (min-width: 600px) {
+.container{
+  max-height:1000px;
+}
+}
+.hoshiswrap{
+	height: 250px;
+position: relative;
+
+}
+.hoshis{
+position: absolute;
+	right:0;
+        bottom:0;
+}
+.seed{
+color:#065040;
+ width:200px;
+margin-left : auto ; 
+margin-right : auto ;
+margin-top : 100px ;
+}
+.seed:hover{
+color:#0C3394;
+}
+</style>
+ <nav>
+    <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+    <% if user_signed_in? %> 
+      <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+      <!-- *_path はUserモデルを作成したときに、
+        deviseにより自動で作成されてますので、rake routesで確認できます -->
+      Logged in as <strong><%= current_user.email %></strong>.
+      <% link_to 'プロフィール変更', edit_user_registration_path %> |
+      <%= link_to "ログアウト", destroy_user_session_path , method: :delete %>
+      <p class="label" style="color:white;"><%= current_user.name %></p>
+    <% else %>
+      <% link_to "サインイン", new_user_registration_path %> 
+      <% link_to "ログイン", new_user_session_path %>
+    <% end %>
+  </nav>
+            <div class="row">
+                <div class="col-xs-12">
+
+            <div class="row">
+                    <% @blogs.each do |blog| %>
+                      <div class="col-xs-12 col-sm-6" style="hight:200px;overflow:hidden;">
+                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
+                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
+                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
+                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
+<hr>
+                    </div>
+                    <% end %>
+    <% @photos.each do |photo| %>
+<div class="col-xs-4 col-md-3">
+<!--       <td><%= photo.name %></td>
+        <td><%= photo.comment %></td> -->
+        <td><%= link_to photo do %><div class="trimming"><%= lazy_image_tag photo.image_url, width: '300' %></div><% end %></td>
+</div>
+    <% end %>
+                    </div>
+
+<!-- Button trigger modal -->
+<!--<div class="hoshis">
+<button type="button" style="background-color:black;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  sign in
+</button>
+</div>
+-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" style="background-color:black;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">cannot login</h4>
+      </div>
+      <div class="modal-body">
+        junbi tyu. tabun 10gatsu ikou
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">cannot login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                </div>
+            </div>
+<!--  <div class="section" id="s02">
+    <figure>
+      <img id="csr" width= "2000px" src="8.jpg" title="hoshi">
+    </figure>
+  </div>
+</div> -->
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+$(document).ready(function(){
+				$('.h2').hover(function() {
+                $(this).stop().animate({'font-size':'40px'}, 300);//左を3px空ける事でテキストを右にずらす
+                },function() {
+                $(this).stop().animate({'font-size':'30px'}, 300);
+                });
+});
+
+</script>

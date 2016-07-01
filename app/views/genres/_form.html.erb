@@ -1,0 +1,35 @@
+<%= form_for(@genre) do |f| %>
+  <% if @genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
+
+      <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :sponsor_link %><br>
+    <%= f.text_area :sponsor_link, :class => 'form-control' %>
+  </div>
+  <% for equip in Equip.all %>
+  <div class="field">
+    <%= check_box_tag "genre[equip_ids][]", equip.id, @genre.equips.include?(equip) %>
+    <%= equip.name %>
+  </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

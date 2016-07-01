@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  transportation: MyString
+  distance: 1.5
+  time: 2016-03-01 21:42:34
+  journal_id: 1
+
+two:
+  title: MyString
+  transportation: MyString
+  distance: 1.5
+  time: 2016-03-01 21:42:34
+  journal_id: 1

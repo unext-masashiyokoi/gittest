@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Priority:</strong>
+  <%= @cycle.priority %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @cycle.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @cycle.content %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @cycle.time %>
+</p>
+
+<%= link_to 'Edit', edit_cycle_path(@cycle) %> |
+<%= link_to 'Back', cycles_path %>

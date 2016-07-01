@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Login</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+ <style type="text/css">
+#csr {
+  position: relative;
+  top: 0px;
+  left:0px;
+  /*width : 87px;
+  height: 166px;*/
+  /*opacity : 0.7;*/
+}
+/*p.cut1 {
+   position: relative;
+}
+p.cut1 figure, img  {
+   position: absolute;
+   clip: rect(10px, 365px, 500px, 5px);
+}*/
+.circle-trim {
+ top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+width: 700px;
+ height: 800px;
+ overflow: hidden
+}
+
+
+@media screen and (max-width:640px){
+
+.circle-trim {
+ top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+width: 350px;
+ height: 600px;
+ overflow: hidden
+}
+#csr {
+  position: relative;
+  top: 0px;
+  left:0px;
+  /*width : 87px;
+  height: 166px;*/
+  /*opacity : 0.7;*/
+}
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/jQueryRotate.js"></script>
+<script type="text/javascript">
+$(function(){
+  
+  //mission2
+  var angle = 0;
+  setInterval(function(){
+        angle+=0.1;
+       $("#s02 figure img").rotate(angle);
+  },100);
+  
+});
+</script>
+
+
+<script type="text/javascript">
+window.addEventListener("devicemotion", function(evt){
+  var gravity = 9.80665; 
+  var csize = 10; 
+  var wx = 300/2; 
+  var wy = 328/2; 
+  var xg = evt.accelerationIncludingGravity.x; 
+  var yg = evt.accelerationIncludingGravity.y;  
+  var zg = evt.accelerationIncludingGravity.z;  
+  var x = wx - (xg / gravity) * wx - csize/2;
+  var y = wy + (yg / gravity) * wy - csize/2;
+  document.getElementById("csr").style.left = x-1000+"px";
+  document.getElementById("csr").style.top = y-800+"px";
+}, true);
+</script>
+</head>
+<body class="gray-bg">
+<div class="circle-trim">
+        <div class="section" id="s02">
+<figure><img id="csr" width= "2000px" src="8.jpg" title="hoshi"></figure></div>
+</div>
+
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">　</h1>
+
+            </div>
+            <h3>koagen β develop site</h3>
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            <p>Login in sample</p>
+            <form class="m-t" role="form" action="index.html">
+                <div class="form-group">
+                    <input type="email" class="form-control" value="sample@sample" placeholder="Username" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" value="sample" placeholder="Password" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Login sample</button>
+
+<!--                 <a href="#"><small>Forgot password?</small></a>
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+ -->            </form>
+            <p class="m-t"> <small>Copyright yokoi info com inc. © 2015</small> </p>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

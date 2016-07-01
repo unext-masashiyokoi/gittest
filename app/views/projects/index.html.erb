@@ -1,0 +1,60 @@
+          <div class="row">
+            <div class="col-lg-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          projects
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+			   <table class="table table-condensed">
+                            <thead>
+                              <tr>
+                                <th>image</th>
+                                <th>Title</th>
+                                <th>issues</th>
+                                <th>journals</th>
+                                <th>events</th>
+                                <th>Category</th>
+                                <th>Start datetime</th>
+                                <th>End datetime</th>
+                                <th>status</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% @projects.each do |project| %>
+                                <tr style="height:60px;overflow:hidden;">
+                                  <td><% if project.content.present? %><%= lazy_image_tag project.content, style: 'width:60px;' %><% end %></td>
+                                  <td><%= project.title %></td>
+                                  <td><%= link_to project.issues.count, project %></td>
+                                  <td><%= link_to project.journals.count, project %></td>
+                                  <td><%= link_to project.events.count, project %></td>
+                                  <td><%= project.category.title %></td>
+                                  <td><%= project.start_datetime.strftime("%Y-%m-%d") %></td>
+                                  <td><%= project.end_datetime.strftime("%Y-%m-%d") %></td>
+                                  <td><%= project.status.title %></td>
+                                  <td><% if user_signed_in? %><%= link_to 'Show', project %>
+                                  <%= link_to 'Edit', edit_project_path(project) %>
+                                  <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+
+                          <br>
+                          <% if user_signed_in? %>
+                          <%= link_to 'New Project', new_project_path %>
+                          <% end %>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>

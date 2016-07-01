@@ -1,0 +1,63 @@
+         <div class="row">
+            <div class="col-lg-12">
+<div style="max-width:400px;">
+ <div id="calendar"></div>
+</div>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          events
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                          <table class="table" >
+                            <tr>
+                              <th>
+                                title
+                              </th>
+                              <th>
+                                start
+                              </th>
+                              <th>
+                                place
+                              </th>
+                              <th>
+                                project
+                              </th>
+                              <th>
+                                link
+                              </th>
+                              <th>
+                              </th>
+                            </tr>
+                            <tbody>
+                              <% @events.each do |event| %>
+                                <tr>
+                                  <td style="max-width:100px;overflow:hidden;font-size:11px;"><%= link_to event.title, event %></td>
+                                  <td><%= event.start.strftime('%Y/%m/%d') %></td>
+                                  <td><%= event.place %></td>
+                                  <td><%= link_to event.project.title, event.project %></td>
+                                  <td><% if event.reference_link.present? %><%= link_to 'link', event.reference_link.to_s, target:"_blank" %><% end %></td>
+                                  <td>
+                                   <%= link_to 'detail', event %>
+                                   <% if user_signed_in? %>
+                                   <%= link_to 'Edit', edit_event_path(event) %>
+                                   <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                   <% end %>
+                                  </td>
+                                </tr>  
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>

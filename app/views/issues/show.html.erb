@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>image:</strong>
+  <%= image_tag @issue.image_link %>
+</p>
+<p>
+  <strong>Subject:</strong>
+  <%= @issue.subject %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @issue.project.title %>
+</p>
+
+<p>
+  <strong>Estimated hours:</strong>
+  <%= @issue.estimated_hours %>
+</p>
+<p>
+  <strong>Total Time:</strong>
+<% total_time = 0 %>
+          <% for journal in @issue.journals.order('date desc') %>
+          <% total_time += journal.time.min + journal.time.hour * 60 %>
+          <% end %>
+<%= (total_time.to_f / 60).round(1) %>
+</p>
+<p>
+<strong>Jouranls:</strong>
+          <% for journal in @issue.journals %>
+          <%= link_to journal.title, journal %>
+          <% end %>
+</p>
+
+
+<p>
+  <strong>Assigned to:</strong>
+  <%= @issue.assigned_to_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @issue.status.title %>
+</p>
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<% end %>
+<%= link_to 'Back', issues_path %>

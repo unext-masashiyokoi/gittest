@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @equip.name %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= simple_format(@equip.detail, {}, {:sanitize => false}) %>a
+</p>
+<%= image_tag @equip.image, width: '300' %>
+<p>
+  <strong>image:</strong>
+  <%= image_tag @equip.image_link %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @equip.date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @equip.status %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @equip.priority %>
+</p>
+
+<p>
+  <strong>Bland:</strong>
+  <%= @equip.bland %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @equip.price %>
+</p>
+
+<p>
+  <strong>store_link:</strong>
+  <%= simple_format(@equip.pr_link, {}, {:sanitize => false}) %>a
+</p>
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_equip_path(@equip) %> |
+<% end %>
+<%= link_to 'Back', equips_path %>

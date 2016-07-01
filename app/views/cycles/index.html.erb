@@ -1,0 +1,87 @@
+    <div id="page-wrapper" class="gray-bg">
+<canvas id="sample" height="280" width="280"></canvas>
+<% @cycles_sum_per_category.each do |cycle1| %>
+<%= cycle1.category.title %>: <%= cycle1.sum_time.strftime('%H:%M') %>
+<% end %>
+        <div class="wrapper wrapper-content animated fadeInRight">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-center m-t-lg">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          cycles
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                          <table class="table" >
+                            <thead>
+                              <tr>
+                                <th>Priority</th>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>category</th>
+                                <th>day</th>
+                                <th>week</th>
+                                <th>month</th>
+                                <th>quarter</th>
+                                <th>year</th>
+                                <th>percent</th>
+                                <th></th>
+                            </thead>
+
+                            <tbody>
+                              <% @cycles.each do |cycle| %>
+                                <tr>
+                                  <td><%= cycle.priority %></td>
+                                  <td><%= cycle.title %></td>
+                                  <td><%= cycle.content %></td>
+                                  <td><%= cycle.category.title %></td>
+                                  <td><%= cycle.time.strftime("%H:%M:%S") %></td>
+                                  <td><%= ((cycle.time.hour.to_f + (cycle.time.min.to_f / 60)) * 7).round(1) %></td>
+                                  <td><%= ((cycle.time.hour.to_f + (cycle.time.min.to_f / 60)) * 30).round(1) %></td>
+                                  <td><%= ((cycle.time.hour.to_f + (cycle.time.min.to_f / 60)) * 120).round(1) %></td>
+                                  <td><%= ((cycle.time.hour.to_f + (cycle.time.min.to_f / 60)) * 365).round(1) %></td>
+                                  <td><%= number_to_percentage((cycle.time.hour.to_f + (cycle.time.min.to_f / 60)) / 24 * 100) %></td>
+                                  <td><%= link_to 'Show', cycle %>
+<% if user_signed_in? %>
+                                  <%= link_to 'Edit', edit_cycle_path(cycle) %>
+                                  <%= link_to 'Destroy', cycle, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                          <strong><%= @cycles_time_sum * 1.2 / 10000 %></strong>
+                          <% if user_signed_in? %><%= link_to 'New Cycle', new_cycle_path %><% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+     <script>
+var doughnutData = [
+<% @cycles.each do |cycle| %>
+　　{
+　　　value: <%= ((cycle.time.hour.to_f + (cycle.time.min.to_f / 60))).round(1) %>,
+　　　color: "<%= category_color(cycle.category_id) %>" ,
+      label: "<%= cycle.title%>"
+　　},
+<% end %>
+];
+
+var myDoughnut = new Chart(document.getElementById("sample").
+getContext("2d")).Pie(doughnutData);
+
+</script>

@@ -1,0 +1,186 @@
+<p id="notice"><%= notice %></p>
+<strong><%= link_to 'project top', projects_path %></strong>
+<p>
+  <h2><%= @project.title %></h2>
+</p>
+
+<p>
+  <strong>image:</strong>
+  <%= image_tag @project.content %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= link_to @project.category.title, @project.category %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @project.status.title %>
+</p>
+
+<p>
+  <strong>Start datetime:</strong>
+  <%= @project.start_datetime.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+  <strong>End datetime:</strong>
+  <%= @project.end_datetime.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          issues
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                          <table class="table" >
+                            <thead>
+                              <tr>
+                                <th>Image</th>
+                                <th>Subject</th>
+                                <th>extimated_hours</th>
+                                <th>journals</th>
+                                <th>jouranls sum time</th>
+                                <th>assigned to</th>
+                                <th>status</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% for issue in @project.issues %>
+      <% total_time = 0 %>
+      <tr>
+        <td><%= image_tag issue.image_link %></td>
+        <td><%= issue.subject %></td>
+        <td><%= issue.estimated_hours %></td>
+        <td>          <% for journal in issue.journals %>
+          <% total_time += journal.time.min + journal.time.hour * 60 %>
+          <% end %>
+          <% issue.journals.each_with_index do |journal, i| %>
+          <%= link_to journal.title, journal, class:"label" %>
+          <%= '...' if i == 10 %>
+          <% break if i == 10 %>
+          <% end %>
+        </td>        <td><%= (total_time.to_f / 60).round(1) %></td>
+        <td><%= issue.assigned_to_id %></td>
+        <td><%= issue.status.title %></td>
+        <td><%= link_to 'Show', issue %></td>
+        <% if user_signed_in? %><td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+      </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                          events
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                          <table class="table" >
+                            <thead>
+                              <tr>
+                                <th>Title</th>
+                                <th>startTime</th>
+                                <th>place</th>
+                                <th>Content</th>
+                                <th>project</th>
+                                <th>category</th>
+                                <th>Distance</th>
+                                <th>Content</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% for event in @project.events.order('start desc') %>
+                                <tr>
+                                  <td><%= event.title %></td>
+                                  <td><%= event.start.strftime("%Y/%m/%d") %></td>
+                                  <td><%= event.place %></td>
+                                  <td><%= event.content %></td>
+                                  <td><%= event.project.title %></td>
+                                  <td><%= event.category.title %></td>
+                                  <td><%= link_to 'Show', journal %>
+                                  <% if user_signed_in? %><%= link_to 'Edit', edit_event_path(event) %>
+                                  <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                          journals
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                          <table class="table" >
+                            <thead>
+                              <tr>
+                                <th>Title</th>
+                                <th>Time</th>
+                                <th>Cost</th>
+                                <th>Cost per hour</th>
+                                <th>Date</th>
+                                <th>Place</th>
+                                <th>Distance</th>
+                                <th>Content</th>
+                                <th>Open range</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% for journal in @project.journals.order('date desc') %>
+                                <tr>
+                                  <td><%= journal.title %></td>
+                                  <td><%= journal.time.strftime("%H:%M:%S") %></td>
+                                  <td><%= journal.cost %></td>
+                                  <td><%= journal.cost.present? ? (journal.cost / (journal.time.hour.to_f + (journal.time.min.to_f / 60))).round(1) : nil %></td>
+                                  <td><%= journal.date %></td>
+                                  <td><%= journal.place %></td>
+                                  <td><%= journal.distance %></td>
+                                  <td><%= journal.content %></td>
+                                  <td><%= journal.open_range.title %></td>
+                                  <td><%= link_to 'Show', journal %>
+                                  <% if user_signed_in? %><%= link_to 'Edit', edit_journal_path(journal) %>
+                                  <%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'project top', projects_path %>

@@ -1,0 +1,33 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1 class="h2">All Categories</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Projects</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.title %></td>
+        <td><% for project in category.projects %><%= project.title %><% end %></td>
+        <td><% if user_signed_in? %><%= link_to 'Show', category %>
+        <%= link_to 'Edit', edit_category_path(category) %>
+        <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if user_signed_in? %>
+<%= link_to 'New Category', new_category_path %>
+<% end %>
+
+</div>

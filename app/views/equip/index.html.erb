@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<h1>Listing Equips</h1>
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>detail</th>
+      <th>image</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Bland</th>
+      <th>storelink</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equips_all.each do |equip| %>
+      <tr>
+        <td><%= equip.name %></td>
+        <td><%= simple_format(equip.detail, {}, {:sanitize => false}) %></td>
+        <td><%= image_tag equip.image_link %></td>
+        <td><%= equip.date %></td>
+        <td><%= equip.status %></td>
+        <td><%= equip.priority %></td>
+        <td><%= equip.bland %></td>
+        <td><%= simple_format(equip.pr_link, {}, {:sanitize => false}) %></td>
+        <td><%= equip.price %></td>
+        <td><%= link_to 'Show', 'equip/' + equip.id.to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

@@ -1,0 +1,140 @@
+<style>
+html{
+  background-color: black;
+}
+
+.container{
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Beech_seedling.jpg/480px-Beech_seedling.jpg');
+  opacity: 0.3;
+//  background-size:100%, auto;
+  height:800px;
+
+}
+
+.row{
+  min-height:250px;
+}
+@media (min-width: 600px) {
+.container{
+  max-height:1000px;
+}
+}
+.hoshiswrap{
+	height: 250px;
+position: relative;
+
+}
+.hoshis{
+position: absolute;
+	right:0;
+        bottom:0;
+}
+.seed{
+color:#065040;
+ width:200px;
+margin-left : auto ; 
+margin-right : auto ;
+margin-top : 100px ;
+}
+.seed:hover{
+color:#0C3394;
+}
+</style>
+ <nav>
+    <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+    <% if user_signed_in? %> 
+      <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+      <!-- *_path はUserモデルを作成したときに、
+        deviseにより自動で作成されてますので、rake routesで確認できます -->
+      Logged in as <strong><%= current_user.email %></strong>.
+      <% link_to 'プロフィール変更', edit_user_registration_path %> |
+      <%= link_to "ログアウト", destroy_user_session_path , method: :delete %>
+      <p class="label" style="color:white;"><%= current_user.name %></p>
+    <% else %>
+      <% link_to "サインイン", new_user_registration_path %> 
+      <% link_to "ログイン", new_user_session_path %>
+    <% end %>
+  </nav>
+            <div class="row">
+                <div class="col-lg-12">
+<div style="color:white;">
+<p>KOAGEN BLOG ※コンセプト編集中:進捗率15％
+<br />自己の成長を加速させ、社会を変える行動を生み出すソーシャルブログ</p>
+
+<p>社会には様々なチャンネルがあります。テレビ・新聞・ラジオ・映画、そしてインターネット。そしてインターネットの世界にもまた様々なチャンネルが存在しています。
+<br />ニュースが見れる。天気が分かる。検索出来る。知恵を共有出来る。ゲームが出来る。大切な仲間や大切な友人や大切な家族と情報を共有し合える。つぶやける。
+<br />これら素晴らしいサービスが生まれて行く事で、インターネットの世界はより多種多様な文化を持つ形へと変化をして来ました。
+<br />そして、そんなインターネットの世界を更により楽しく豊かに変化させて行く為の新たなソーシャル・ネットワーキング・サービスを創りたい。そんな想いから、このコウゲンブログは誕生しました。</p>
+
+<p>コウゲンブログは光のブログ、より光り輝く自身を生み出す為のプラットフォームです。
+<br />人間の内から生じるプラスのエネルギーにフォーカスし、何か新しい事を始める力、何か新たな挑戦を行う力を引き出すブログ。
+<br />こんな事を頑張ろう。あんな事をやってみよう。そんなエネルギーを共有し、シナジーを起こし、拡大・増大させる。
+<br />何かしなきゃの何かとは、人それぞれで全く異なる。別の観点で言えば、必ずどんな人でも何かしらは存在している。
+<br />そんな何かを引き出すサービス。ダイエットしたり・勉強したり・スポーツしたり・仕事をしたり・ゲームをしたり。人によっての前とはそれぞれ違う。
+<br />しかし全く異なる事をしていても、必ずどこかで心の深い部分では繋がっている。そんな部分で繋がる事が出来る空間。</p>
+
+<p>コウゲンブログは光のブログ。社会を明るく照らして行くエネルギーを生み出すプラットフォーム。
+<br />世界には、解決しなければならない問題が星の数程存在しています。しかし、日々の生活に追われると、そんな問題からは意識が外れてしまう。
+<br />しかし誰かが行動しなければ、世界は変わらない。格差は、善意が無ければ是正がされない。自然や環境は、守ろうと言う意思が無ければ悪化し続ける。
+<br />影響力の大小ではなく、大きい小さいは関係無い。一人一人の持つ力を少しずつでも集める事でこそ、本当の意味での大きな変革・革新が生まれる。</p>
+
+<p>誰もがすぐに、社会に貢献する様な大きな行動を起こせる訳ではない。
+<br />読書を始めた。一駅歩いた。1kg痩せた。5km走れる様になった。タバコのポイ捨てをやめた。普段はやならない募金をし、普段はやらない献血をした。それは何でも構わない。
+<br />小さな習慣の変化の集積こそが、大きなエネルギーへと繋がる。</p>
+
+<p>コウゲンブログは光源のブログ、高原のブログ。時に大自然の中、心から開放的になる事でこそ大きなエネルギーは得られる。真面目なだけでは物事は片付かない。大きな発散があるからこそ、大きな集中が生み出される。 しかし、常に心の中には、世界を明るく照らし続けると言う強い想いを持ち続ける。そんな文化を発信するブログ。</p>
+
+<p>自分が変われば、周りも変わる。周りが変わればその周りも変わる。その周りも変われば、その地域も変わる。</p>
+
+<p>その地域が変われば、日本も変わる。日本が変われば、アジアが変わる。アジアが変われば世界が変わる。世界が変われば宇宙が変わる。宇宙が変われば、何が変わるのでしょうか。。</p>
+
+<p>そんなプラスのエネルギーを生み出す為の源流となるプラットフォームサービス。編集中：進捗率15%</p>
+
+</div>
+<!-- Button trigger modal -->
+<!--<div class="hoshis">
+<button type="button" style="background-color:black;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  sign in
+</button>
+</div>
+-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" style="background-color:black;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">cannot login</h4>
+      </div>
+      <div class="modal-body">
+        junbi tyu. tabun 10gatsu ikou
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">cannot login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                </div>
+            </div>
+<!--  <div class="section" id="s02">
+    <figure>
+      <img id="csr" width= "2000px" src="8.jpg" title="hoshi">
+    </figure>
+  </div>
+</div> -->
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+$(document).ready(function(){
+				$('.h2').hover(function() {
+                $(this).stop().animate({'font-size':'40px'}, 300);//左を3px空ける事でテキストを右にずらす
+                },function() {
+                $(this).stop().animate({'font-size':'30px'}, 300);
+                });
+});
+
+</script>

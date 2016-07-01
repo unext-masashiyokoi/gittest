@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          issues
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                           <table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Subject</th>
+      <th>Project</th>
+      <th>Estimated hours</th>
+      <th>Journals</th>
+      <th>journals time</th>
+      <th>Assigned to</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <% total_time = 0 %>
+      <tr>
+        <td><% if issue.image_link.present? %><%= link_to lazy_image_tag(issue.image_link, style: 'width:100px;'), issue %><% end %></td>
+        <td><%= issue.subject %></td>
+        <td><%= link_to issue.project.title, issue.project %></td>
+        <td><%= issue.estimated_hours %></td>
+        <td>
+          <% for journal in issue.journals.order('date desc') %>
+          <% total_time += journal.time.min + journal.time.hour * 60 %>
+          <% end %>
+          <% issue.journals.order('date desc').each_with_index do |journal, i| %>
+          <%= link_to journal.title, journal, class:"label" %>
+          <%= '...' if i == 10 %>
+          <% break if i == 10 %>
+          <% end %>
+        </td>
+        <td><%= (total_time.to_f / 60).round(1) %></td>
+        <td><%= issue.assigned_to_id %></td>
+        <td><%= issue.status.title %></td>
+        <td><%= link_to 'Show', issue %></td>
+        <% if user_signed_in? %><td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+<% if user_signed_in? %>
+<%= link_to 'New Issue', new_issue_path %>
+<% end %>

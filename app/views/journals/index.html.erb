@@ -1,0 +1,130 @@
+         <div class="row">
+            <div class="col-lg-12">
+<div style="max-width:400px">
+<div id="calendarJournals"></div>
+</div>
+<canvas id="sample" height="280" width="280"></canvas>
+    <canvas id="lineChart" height="300" width="280"></canvas>
+<% if user_signed_in? %>
+<%= link_to "New", new_journal_path, { class:"btn btn-info"} %>
+<% end %>
+<%= paginate @journals %>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          journals
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <div class="table-responsive">
+                          <table class="table" >
+                            <thead>
+                              <tr>
+                                <th>Title</th>
+                                <th>Time</th>
+                                <th>Cost</th>
+                                <th>Cost per hour</th>
+                                <th>Date</th>
+                                <th>Place</th>
+                                <th>move</th>
+                                <th>Project</th>
+                                <th>Issue</th>
+                                <th>Open range</th>
+                                <th>Content</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% @journals.each do |journal| %>
+                                <tr>
+                                  <td><%= link_to journal.title, journal %></td>
+                                  <td><%= journal.time.strftime("%H:%M:%S") %></td>
+                                  <td><%= journal.cost %></td>
+				  <td><%= journal.cost.present? ? (journal.cost / (journal.time.hour.to_f + (journal.time.min.to_f / 60))).round(1) : nil %></td>
+                                  <td><%= journal.date %></td>
+                                  <td><%= journal.place %></td>
+                                  <td>
+<% for move in journal.moves %>
+<%= move.distance %>
+<%= move.transportation %>
+<% end %>
+</td>
+                                  <td><%= link_to journal.project.title, journal.project %><% if journal.project.content.present? %><%= lazy_image_tag(journal.project.content, style: 'width:100px;') %><% end %></td>
+                                  <td><%= link_to journal.issue.subject, journal.issue %><% if journal.issue.image_link.present? %><%= lazy_image_tag(journal.issue.image_link, style: 'width:100px;') %><% end %></td>
+                                  <td><%= journal.open_range.title %></td>
+                                  <td><%= journal.content %></td>
+                                  <td><%= link_to 'Show', journal %>
+                                  <% if user_signed_in? %><%= link_to 'Edit', edit_journal_path(journal) %>
+                                  <%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+     <script>
+    var data = {
+        labels: [ 
+                 <% @monthty_time_amount.each do | month |%>
+                       "<%= month.yearmonth %>",
+                 <% end %>
+                ],
+        datasets: [
+            {
+                label: "Prime and Fibonacci",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [ 
+                      <% @monthty_time_amount.each do | month |%>
+                   <%= month.sec.to_i / 60 / 60 %>,
+                      <% end %>
+                      ]
+            }
+         //   {
+         //       label: "My Second dataset",
+         //       fillColor: "rgba(151,187,205,0.2)",
+         //       strokeColor: "rgba(151,187,205,1)",
+         //       pointColor: "rgba(151,187,205,1)",
+         //       pointStrokeColor: "#fff",
+         //       pointHighlightFill: "#fff",
+         //       pointHighlightStroke: "rgba(151,187,205,1)",
+         //       data: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+         //   }
+        ]
+    };
+    var ctx = document.getElementById("lineChart").getContext("2d");
+    var options = { };
+    var lineChart = new Chart(ctx).Line(data, options);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+     <script>
+var doughnutData = [
+<% @journals_group_project.each do |journal| %>
+　　{
+　　　value: <%= journal.sum_time %>,
+　　　color: "black" ,
+      label: "<%= journal.project.title %>"
+　　},
+<% end %>
+];
+
+var myDoughnut = new Chart(document.getElementById("sample").
+getContext("2d")).Doughnut(doughnutData);
+
+</script>

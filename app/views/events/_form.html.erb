@@ -1,0 +1,53 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.select :category_id, Category.all.map{|t| [t.title, t.id]}  %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= f.select :project_id, Project.all.map{|t| [t.title, t.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.datetime_select :start, :end_year => Time.now.year + 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.datetime_select :end, :end_year => Time.now.year + 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br>
+    <%= f.text_field :place %>
+  </div>
+  <div class="field">
+    <%= f.label :open_range_id %><br>
+    <%= f.text_field :open_range_id %>
+  </div>
+  <div class="field">
+    <%= f.label :reference_link %><br>
+    <%= f.text_field :reference_link %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

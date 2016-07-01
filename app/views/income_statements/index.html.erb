@@ -1,0 +1,108 @@
+<style type="text/css">
+
+table.table-headerfixed{
+  table-layout: fixed;
+}
+
+table.table-headerfixed thead,
+table.table-headerfixed tbody{
+    display: block;
+    width: 3000px;
+}
+
+table.table-headerfixed tbody {
+    height: 600px;
+    width: 3000px;
+    overflow-y: scroll;
+}
+table.table-headerfixed th, td{
+  width: 110px;
+}
+
+</style>
+
+<div id="wrapper">
+  <%= render 'layouts/sidebar' %>
+		<a href="/personal_incomestatements">parsonal incomestatement</a>
+                          <table class="table  table-headerfixed">
+                            <thead>
+                              <tr>
+                                <th>month</th>
+                                <th>revenue</th>
+                                <th>cash</th>
+                                <th>profit</th>
+                                <th>show</th>
+                                <th>cost total</th>
+                                <th>ceo</th>
+                                <th>personal</th>
+                                <th>sales</th>
+                                <th>social insurance</th>
+                                <th>tax expense</th>
+                                <th>tax business</th>
+                                <th>delay loss</th>
+                                <th>communi cation</th>
+                                <th>transport</th>
+                                <th>capital</th>
+                                <th>adveertise</th>
+                                <th>entertain</th>
+                                <th>affair</th>
+                                <th>shareholder</th>
+                                <th>lower</th>
+                                <th>debt</th>
+                                <th>realestate</th>
+                                <th>total</th>
+                                <th>show</th>
+                                <th>edit</th>
+                                <th>destroy</th>
+                              </tr>
+                            </thead>
+                            <tbody><% goukei = 0 %>
+                              <% @income_statements.each_with_index do |income_statement, index| %>
+				<tr>
+                                  <td><%= income_statement.date %></td>
+                                  <td><%= income_statement.ses_business_revenue %></td>
+                                  <td><%= goukei %></td>
+                                  <td><%= tandoku = income_statement.ses_business_revenue.to_i - income_statement.cost_sum.to_i - income_statement.representative_reward.to_i %></td>
+                                  <% goukei += tandoku %>
+                                  <td><%= link_to 'Show', income_statement %></td>
+                                  <td><%= income_statement.cost_sum.to_i + income_statement.representative_reward.to_i %></td>
+                                  <td><%= income_statement.representative_reward %></td>
+                                  <td><%= income_statement.personnel_expenses %></td>
+                                  <td><%= income_statement.sales_support_fee %></td>
+                                  <td><%= income_statement.social_insurance_costs %></td>
+                                  <td><%= income_statement.tax_expense %></td>
+                                  <td><%= income_statement.business_tax %></td>
+                                  <td><%= income_statement.delay_loss %></td>
+                                  <td><%= income_statement.communications_expenses %></td>
+                                  <td><%= income_statement.transportation_cost %></td>
+                                  <td><%= income_statement.capital_investment %></td>
+                                  <td><%= income_statement.advertising_expenses %></td>
+                                  <td><%= income_statement.entertainment_expenses %></td>
+                                  <td><%= income_statement.affairs_costs %></td>
+                                  <td><%= income_statement.shareholder_costs %></td>
+                                  <td><%= income_statement.lower_costs %></td>
+                                  <td><%= income_statement.debt_costs %></td>
+                                  <td><%= income_statement.realestate %></td>
+                                  <td><%= income_statement.cost_sum.to_i + income_statement.representative_reward.to_i %></td>
+                                  <td><%= link_to 'Show', income_statement %></td>
+                                  <td><%= link_to 'Edit', edit_income_statement_path(income_statement) %></td>
+                                  <td><%= link_to 'Destrroy', income_statement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+
+                        </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                β TEST
+            </div>
+            <div>
+                <strong>Copyright</strong> yokoi info com inc. &copy; 2015
+            </div>
+        </div>
+    </div>
+</div>

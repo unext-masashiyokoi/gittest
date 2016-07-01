@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subuject: MyString
+  project_id: 1
+  estimated_hours: 1
+  assigned_to_id: 1
+  status_id: 1
+
+two:
+  subuject: MyString
+  project_id: 1
+  estimated_hours: 1
+  assigned_to_id: 1
+  status_id: 1
