@@ -68,7 +68,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $("img.lazy").lazyload({
+    $("img").lazyload({
         effect : "fadeIn",
         effect_speed: 2000 		// 3秒かけて表示させる
     });

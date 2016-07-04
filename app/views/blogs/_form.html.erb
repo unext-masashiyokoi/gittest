@@ -19,6 +19,15 @@
     <%= f.label :content %><br>
     <%= f.text_area :content, class:"form-control", rows:20 %>
   </div>
+  <% for photo in @blog.user.photos.limit(20).order('id desc') %>
+  <div class="field">
+    <%= radio_button_tag "blog[photo_ids][]", photo.id, @blog.photos.include?(photo) %>
+    <%= photo.name %>
+    <code>
+      &lt;a href="<%= photo_path(photo) %>" &gt;&lt;img data-original=<%= image_path(photo.image_url) %> &gt;&lt;/a&gt;
+    </code>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit class:"form-control" %>
   </div>
