@@ -1,7 +1,7 @@
-== README
+# KOAGEN seed project
 
-## License
-KOAGEN SEED PROJECT is under the <a href="http://www.opensource.org/licenses/MIT">MIT License</a>
+##### License
+KOAGEN seed project is under the <a href="http://www.opensource.org/licenses/MIT">MIT License</a>
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
