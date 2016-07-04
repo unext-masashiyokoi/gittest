@@ -27,10 +27,14 @@
          <button type="submit" class="btn btn-default">Submit</button>
       </form>
       --> 
-      <!--<ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tachometer"></i> kasoku<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-align-justify"></i><span class="caret"></span></a>
           <ul class="dropdown-menu">
+                <li>
+                    <a href="/developpers"><i class="fa fa-gavel"></i> <span class="nav-label">develop</span> </a>
+                </li>
+                <% if user_signed_in? %>
                 <li>
                     <a href="/cycles" class="animsition-link"><i class="glyphicon glyphicon-refresh"></i> <span class="nav-label">cycles</span> </a>
                 </li>
@@ -52,7 +56,6 @@
                 <li>
                     <a href="/genres" class="animsition-link"><i class="glyphicon glyphicon-tags"></i> <span class="nav-label">genres</span> </a>
                 </li>
-                <% if user_signed_in? %>
                 <li>
                     <a href="/moves"><i class="glyphicon glyphicon-plane"></i> <span class="nav-label">moves</span> </a>
                 </li>
@@ -71,7 +74,7 @@
                 <% end %>
           </ul>
         </li>
-      </ul> -->
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

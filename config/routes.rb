@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :cycles
   resources :categories
   resources :events
+  resources :developpers
 
   resources :blogs do 
         get :all, on: :collection
