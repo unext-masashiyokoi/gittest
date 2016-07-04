@@ -252,9 +252,9 @@ ActiveRecord::Schema.define(version: 20160626012121) do
 
   create_table "photos", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.text     "comment",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "comment",    limit: 16777215
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "image",      limit: 255
     t.integer  "genre_id",   limit: 4
     t.integer  "user_id",    limit: 4
