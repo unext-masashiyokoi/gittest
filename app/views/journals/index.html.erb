@@ -1,10 +1,12 @@
          <div class="row">
             <div class="col-lg-12">
+<!--
 <div style="max-width:400px">
 <div id="calendarJournals"></div>
 </div>
 <canvas id="sample" height="280" width="280"></canvas>
     <canvas id="lineChart" height="300" width="280"></canvas>
+-->
 <% if user_signed_in? %>
 <%= link_to "New", new_journal_path, { class:"btn btn-info"} %>
 <% end %>
@@ -30,11 +32,9 @@
                                 <th>Cost per hour</th>
                                 <th>Date</th>
                                 <th>Place</th>
-                                <th>move</th>
                                 <th>Project</th>
                                 <th>Issue</th>
                                 <th>Open range</th>
-                                <th>Content</th>
                                 <th></th>
                               </tr>
                             </thead>
@@ -42,22 +42,15 @@
                               <% @journals.each do |journal| %>
                                 <tr>
                                   <td><%= link_to journal.title, journal %></td>
-                                  <td><%= journal.time.strftime("%H:%M:%S") %></td>
+                                  <td><%= journal.time.strftime("%H:%M") %></td>
                                   <td><%= journal.cost %></td>
 				  <td><%= journal.cost.present? ? (journal.cost / (journal.time.hour.to_f + (journal.time.min.to_f / 60))).round(1) : nil %></td>
                                   <td><%= journal.date %></td>
                                   <td><%= journal.place %></td>
-                                  <td>
-<% for move in journal.moves %>
-<%= move.distance %>
-<%= move.transportation %>
-<% end %>
-</td>
-                                  <td><%= link_to journal.project.title, journal.project %><% if journal.project.content.present? %><%= lazy_image_tag(journal.project.content, style: 'width:100px;') %><% end %></td>
-                                  <td><%= link_to journal.issue.subject, journal.issue %><% if journal.issue.image_link.present? %><%= lazy_image_tag(journal.issue.image_link, style: 'width:100px;') %><% end %></td>
+                                  <td><%= link_to journal.project.title, journal.project %><% if journal.project.content.present? %><% end %></td>
+                                  <td><%= link_to journal.issue.subject, journal.issue %><% if journal.issue.image_link.present? %><% end %></td>
                                   <td><%= journal.open_range.title %></td>
-                                  <td><%= journal.content %></td>
-                                  <td><%= link_to 'Show', journal %>
+                                  <td><%= link_to 'detail', journal %>
                                   <% if user_signed_in? %><%= link_to 'Edit', edit_journal_path(journal) %>
                                   <%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
                                 </tr>

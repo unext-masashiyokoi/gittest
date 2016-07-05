@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 
   def index
  #   @photos = Photo.all.order('id desc')
-    @photos = Photo.all.order('id desc').where('image is not null').page(params[:page]).per(9)
+    @photos = Photo.all.order('id desc').where('image is not null').page(params[:page]).per(108)
     respond_with(@photos)
   end
 

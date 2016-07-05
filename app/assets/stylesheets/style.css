@@ -139,27 +139,22 @@ img {
 }
 
 div.trimming {
-  width: 106px;
-  height: 106px;
+  width: 90px;
+  height: 90px;
   overflow: hidden;
 }
 
 div.trimming > img {
-  width: 98%;
-  height: 98%;
+  max-width: 99%;
+  max-height: 99%;
 }
 
 
 @media (min-width: 450px) {
   div.trimming {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-  }
-
-  div.trimming > img {
-    width: 98%;
-    height: 98%;
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
   }
 
 }
@@ -176,16 +171,30 @@ div.trimming > img {
     float: right;
   }
   div.trimming {
-   width: 200px;
-   height:200px;
-   overflow: hidden;
+    width: 240px;
+    height: 240px;
+    overflow: hidden;
   }
 
-  div.trimming > img {
-   width: 98%;
-   height: 98%;
+}
+
+
+@media (min-width: 992px) {
+  div.trimming {
+    width: 320px;
+    height: 320px;
+    overflow: hidden;
   }
 
+}
+
+
+@media (min-width: 1200px) {
+  div.trimming {
+    width: 360px;
+    height: 360px;
+    overflow: hidden;
+  }
 
 }
 

@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :project_id %><br>
-    <%= f.select :project_id, Project.all.map{|t| [t.title, t.id]}, class: "form-control" %>
+    <%= f.select :project_id, Project.where('status_id != 5').map{|t| [t.title, t.id]}, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :issue_id %><br>
-    <%= f.select :issue_id, Issue.all.map{|t| [t.subject, t.id]}, class: "form-control" %>
+    <%= f.select :issue_id, Issue.where('status_id != 5').map{|t| [t.subject, t.id]}, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :time %><br>

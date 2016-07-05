@@ -5,10 +5,10 @@
 <% link_to 'New Photo', new_photo_path %>
 <% end %>
     <% @photos.each do |photo| %>
-<div class="col-xs-4 col-md-3"> 
+<div class="col-xs-4"> 
 <!--       <td><%= photo.name %></td>
         <td><%= photo.comment %></td> -->
-	<td><%= link_to photo do %><div class="trimming"><%= lazy_image_tag photo.image_url, width: '250' %></div><% end %></td>
+	<td><%= link_to photo do %><div class="trimming"><%= lazy_image_tag photo.image_url %></div><% end %></td>
         <td>
           <% if user_signed_in? %>
             <% link_to 'Edit', edit_photo_path(photo) %>

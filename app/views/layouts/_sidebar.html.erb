@@ -17,6 +17,7 @@
         <li><a href="/blogs" class="animsition-link"><i class="fa fa-book"></i> <span class="nav-label">blogs</span></a></li>
         <li><a href="/photos" class="animsition-link"><i class="glyphicon glyphicon-picture"></i> <span class="nav-label">photos</span> </a></li>
         <li><a href="/members" class="animsition-link"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">users</span> </a></li>
+        <li><a href="/developpers" class="animsition-link"><i class="fa fa-gavel"></i> <span class="nav-label">developper</span> </a></li>
       </ul>
       <!--
       <form class="navbar-form navbar-left" role="search">
@@ -32,16 +33,6 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-align-justify"></i><span class="caret"></span></a>
           <ul class="dropdown-menu">
                 <li>
-                    <a href="/developpers"><i class="fa fa-gavel"></i> <span class="nav-label">develop</span> </a>
-                </li>
-                <% if user_signed_in? %>
-                <li>
-                    <a href="/cycles" class="animsition-link"><i class="glyphicon glyphicon-refresh"></i> <span class="nav-label">cycles</span> </a>
-                </li>
-                <li>
-                  <a href="/events" class="animsition-link"><i class="fa fa-calendar"></i> <span class="nav-label">calendar</span> </a>
-               </li>
-                <li>
                     <a href="/projects" class="animsition-link"><i class="glyphicon glyphicon-list-alt"></i> <span class="nav-label">projects</span> </a>
                 </li>
                 <li>
@@ -50,24 +41,7 @@
                 <li>
                     <a href="/journals" class="animsition-link"><i class="glyphicon glyphicon-floppy-saved" ></i> <span class="nav-label">journals</span> </a>
                 </li>
-                <li>
-                    <a href="/categories" class="animsition-link"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">categories</span> </a>
-                </li>
-                <li>
-                    <a href="/genres" class="animsition-link"><i class="glyphicon glyphicon-tags"></i> <span class="nav-label">genres</span> </a>
-                </li>
-                <li>
-                    <a href="/moves"><i class="glyphicon glyphicon-plane"></i> <span class="nav-label">moves</span> </a>
-                </li>
-                <li>
-                    <a href="/developpers"><i class="glyphicon glyphicon-wrench"></i> <span class="nav-label">develop</span> </a>
-                </li>
-                <li>
-                    <a href="/equips" class="animsition-link"><i class="fa fa-suitcase"></i> <span class="nav-label">equips</span></a>
-                </li>
-                <li>
-                    <a href="/income_statements" class="animsition-link"><i class="fa fa-dollar"></i> <span class="nav-label">finance</span><i class="glyphicon glyphicon-user"></i> </a>
-                </li>
+                <% if user_signed_in? %>
                 <li>
                     <a href="/memos" class="animsition-link"><i class="glyphicon glyphicon-pencil"></i> <span class="nav-label">memo</span><i class="glyphicon glyphicon-user"></i> </a>
                 </li>

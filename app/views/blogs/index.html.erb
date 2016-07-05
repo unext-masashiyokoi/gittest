@@ -2,18 +2,22 @@
   <div class="row">
 <div class="col-xs-12">
 <%= search_form_for @q do |f| %>
-
+<div class="input-group">
   <%# start 特定の文字列で始まる商品名で検索 %>
   <%= f.search_field :title_or_content_or_user_name_cont, class:"form-control" %>
   <%# 検索ボタン %>
+  <span class="input-group-btn">
   <%= f.submit  class:"btn btn-primary" %>
+  </span>
+</div>
 <% end %>
 </div>
 </div>
   <div class="row">
                     <% @blogs.each do |blog| %>
-                      <div class="col-xs-12 col-sm-6" style="hight:200px;overflow:hidden;">
-                      <h2 class="h4"><%= link_to blog.title, blog %></h2>
+                      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:190px;">
+<hr>
+                      <h2 class="h4" style="height:20px;overflow:hidden;"><%= link_to blog.title, blog %></h2>
 <!--
                       <i class="glyphicon glyphicon-tags"></i>
                       <% if !blog.genres.present? %><label>no genre</label><% end %>
@@ -23,7 +27,7 @@
 -->
                       <div class="row">
                       <div class=<%= blog.photos.present? ? "col-xs-9 col-sm-9" : "col-xs-12 col-sm-12" %> >
-                       <p style="height:80px;overflow:hidden;"><%= link_to rm_html_tag(blog.content), blog , class:""%></p> 
+                       <p style="height:82px;overflow:hidden;"><%= link_to rm_html_tag(blog.content), blog , class:""%></p> 
                       </div>
                       <% if blog.photos.present? %>
                       <div class="col-xs-3 col-sm-3" style="padding-left:1px;"> 
@@ -36,23 +40,24 @@
                       </div>
                       <% end %> 
                       </div>
-                       <p><i><%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:45px;' ), blog.user.name %></i><%= link_to blog.user.name, blog.user.name, class:"label" %>
-      <i class="fa fa-rss-square fa-lg fa-green"></i>
-      <i class="fa fa-check-square fa-orange fa-lg"></i>
-
-<i class="glyphicon glyphicon-time"></i><label class="label"><%= blog.created_at.strftime('%Y/%m/%d %H:%M') %></lebel>
+                       <p><%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:auto;height:auto;max-width:45px; max-height:45px;' ), blog.user.name %><%= link_to blog.user.name, blog.user.name, class:"label" %>
+                         <!--<i class="fa fa-rss-square fa-lg fa-green"></i>
+                         <i class="fa fa-check-square fa-orange fa-lg"></i>-->
+                         <i class="glyphicon glyphicon-time"></i><label class="label"><%= blog.created_at.strftime('%y/%m/%d') %></lebel>
 </p>
-  <% for journal in blog.journals %>
-  <%= link_to journal.title, journal, class:"label" %>
-  <% end %>
-                        <% if user_signed_in? %>
-                          <% link_to 'Edit', edit_blog_path(blog) %>
-                          <% link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-                        <% end %>
-<hr>
+<!--
+                       <% for journal in blog.journals %>
+                         <%= link_to journal.title, journal, class:"label" %>
+                       <% end %>
+-->
+                       <% if user_signed_in? %>
+                         <% link_to 'Edit', edit_blog_path(blog) %>
+                         <% link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+                       <% end %>
                     </div>
                     <% end %>
           </div>
+<hr>
                 <%= paginate @blogs %>
 <p><%= link_to 'allblog', all_blogs_path %></p>
 <!-- <div id="calendarBlogs"></div> -->

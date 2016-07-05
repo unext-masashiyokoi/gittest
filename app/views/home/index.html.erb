@@ -43,36 +43,21 @@ color:#0C3394;
       <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
       <!-- *_path はUserモデルを作成したときに、
         deviseにより自動で作成されてますので、rake routesで確認できます -->
-      Logged in as <strong><%= current_user.email %></strong>.
-      <% link_to 'プロフィール変更', edit_user_registration_path %> |
+      <%= link_to 'プロフィール変更', edit_user_registration_path %> |
       <%= link_to "ログアウト", destroy_user_session_path , method: :delete %>
-      <p class="label" style="color:white;"><%= current_user.name %></p>
     <% else %>
       <% link_to "サインイン", new_user_registration_path %> 
       <% link_to "ログイン", new_user_session_path %>
     <% end %>
   </nav>
-            <div class="row">
-                <div class="col-xs-12">
+            <div class="col-xs-12">
 
-            <div class="row">
-                    <% @blogs.each do |blog| %>
-                      <div class="col-xs-12 col-sm-6" style="hight:200px;overflow:hidden;">
-                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
-                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
-                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
-                       <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:70px;' ), blog.user.name %>
-<hr>
-                    </div>
-                    <% end %>
-    <% @photos.each do |photo| %>
-<div class="col-xs-4 col-md-3">
-<!--       <td><%= photo.name %></td>
-        <td><%= photo.comment %></td> -->
-        <td><%= link_to photo do %><div class="trimming"><%= lazy_image_tag photo.image_url, width: '300' %></div><% end %></td>
-</div>
-    <% end %>
-                    </div>
+              <% @blogs.each do |blog| %>
+                <div class="col-xs-6 col-md-3 col-sm-4" style="height:160px;">
+                  <%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:auto;height:auto;max-width:145px; max-height:145px;' ), blog.user.name %>
+                </div>
+              <% end %>
+            </div>
 
 <!-- Button trigger modal -->
 <!--<div class="hoshis">
@@ -100,7 +85,6 @@ color:#0C3394;
   </div>
 </div>
 
-                </div>
             </div>
 <!--  <div class="section" id="s02">
     <figure>
