@@ -16,13 +16,13 @@
     <script src="/js/jquery.layzyload.min.js"></script>
     <!-- Custom and plugin javascript -->
 <body ng-app="sampleApp">
-<div class="container animsition">
 <%= render 'layouts/sidebar' %>
+<div class="container-fluid animsition">
 <% if user_signed_in? %>
 <p style="text-shadow: 1px 1px 3px #fff;">こんにちわ<%= link_to current_user.name, username_path(current_user.name) %>さん</p>
 <% end %>
 <%= yield %>
-<%= render 'layouts/footer' %>
 </div>
+<%= render 'layouts/footer' %>
 </body>
 </html>

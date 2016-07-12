@@ -26,9 +26,9 @@
   <% end %>
 </p>
 -->
-<p>
+<div class="blog-content">
   <%= simple_format( @blog.content, {}, {:sanitize => false}) %>
-</p>
+</div>
 <p><%= link_to image_tag(@blog.user.image, class:"img-circle", style: 'width:50px;' ), username_path(@blog.user.name) %><label class="label"><%= link_to @blog.user.name, username_path(@blog.user.name) %></label>
       <i class="fa fa-rss-square fa-lg fa-green"></i>
       <i class="fa fa-check-square fa-orange fa-lg"></i>

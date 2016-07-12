@@ -8,6 +8,7 @@ a:focus,
 a:hover,
 a:visited
  {
+  color:cyan;
 }
 
 /* Custom default button */
@@ -37,16 +38,22 @@ a:visited
  *  * Base structure
  *   */
 
-html,
+
+.container-fluid {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 body {
   width: 94%;
   background-color: white; 
   font-family: "メイリオ", "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
-  color: black;
+  color: azure;
   margin: auto;
+  padding-top: 50px;
 //  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Beech_seedling.jpg/480px-Beech_seedling.jpg');
+  text-shadow: 1.5px 1.5px 2px rgba(0,0,0,1);
+  background-image: url('/uploads/photo/image/236/480px-Beech_seedlingg.jpg');
 }
 
 p {
@@ -59,9 +66,14 @@ p {
     border-color: #ddd;
 }
 
-.navbar-default .navbar-brand {
+.navbar-default {
     color: #02FFD0;
 }
+
+.navbar-inverse .navbar-brand {
+  color: #007FFF;
+}
+
 
 input, text, textarea, select {
   color: black;
@@ -357,7 +369,6 @@ hr {
 .container{
   padding-right: 7px;
   padding-left: 7px;
-  padding-top: 7px;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
@@ -365,13 +376,8 @@ hr {
 html{
     width: 100%;
 }
-p > img{
- display: block;
- margin-left: auto;
- margin-right: auto;
-}
 
-.lazy{
+.blog-content img{
  display: block;
  margin-left: auto;
  margin-right: auto;
@@ -382,11 +388,6 @@ div.dev > div > img{
 }
 
 
-.label {
-  color: black;
-}
-
-
 .fa-green:before
 {
   color: green ;
@@ -394,4 +395,26 @@ div.dev > div > img{
 .fa-orange:before
 {
   color: orange ;
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left : 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: #222;
+}
+
+.text-muted {
+  margin: 10px 0;
+  font-size: 10px;
+}
+ 
+.footer > .container {
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: #222;
 }

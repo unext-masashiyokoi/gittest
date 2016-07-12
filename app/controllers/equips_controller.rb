@@ -5,9 +5,9 @@ class EquipsController < ApplicationController
   def index
     @equips = Equip.where(status: 0)
     @equips_all = Equip.where('status = 9').order('status asc').order('date')
-    @equips_not_zero = Equip.where('status not in (0, 9) ').order('date')
+    @equips_not_zero = Equip.where('status not in (0, 9, 8) ').order('date')
     @equips_price_sum = Equip.where(status: 0).sum(:price)
-    @equips_price_sum_not_zero = Equip.where('status not in (0, 9) ').sum(:price)
+    @equips_price_sum_not_zero = Equip.where('status not in (0, 9, 8) ').sum(:price)
     @equips_price_sum_all = Equip.where('status = 9').sum(:price)
     respond_with(@equips)
   end
