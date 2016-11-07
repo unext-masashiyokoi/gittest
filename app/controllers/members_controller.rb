@@ -2,7 +2,6 @@ class MembersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   respond_to :html
-  before_filter :basic, only: [:new, :edit, :update]
   skip_before_filter :verify_authenticity_token  
   
   def index
@@ -15,6 +14,13 @@ class MembersController < ApplicationController
   end
 
   def show
+    @blogs = Blog.order("created_at desc")
+  end
+
+  def edit
+    if current_user.id != @user.id 
+      redirect_to :back
+    end
   end
 
   def show_by_username

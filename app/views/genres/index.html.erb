@@ -8,6 +8,7 @@
     <tr>
       <th>Title</th>
       <th>Content</th>
+      <th>exec</th>
       <th>Blogs</th>
       <th>Equips</th>
       <th>Sponsor link</th>
@@ -20,6 +21,7 @@
       <tr>
         <td><%= link_to(genre.title, genre) %></td>
         <td><%= genre.content %></td>
+        <td><button class="btn-danger">exec</button></td>
         <td>
         <% for blog in genre.blogs %>
         <%= link_to blog.title, blog %>

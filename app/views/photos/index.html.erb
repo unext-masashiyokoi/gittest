@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-<div class="col-md-12">
 <% if user_signed_in? %>
-<% link_to 'New Photo', new_photo_path %>
+<%= link_to 'New Photo', new_photo_path, class:"btn btn-success" %>
 <% end %>
+<div class="col-md-12">
     <% @photos.each do |photo| %>
 <div class="col-xs-4"> 
 <!--       <td><%= photo.name %></td>

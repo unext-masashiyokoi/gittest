@@ -51,9 +51,10 @@ body {
   color: azure;
   margin: auto;
   padding-top: 50px;
+  padding-bottom: 30px;
 //  text-align: center;
   text-shadow: 1.5px 1.5px 2px rgba(0,0,0,1);
-  background-image: url('/uploads/photo/image/236/480px-Beech_seedlingg.jpg');
+  background-image: url('/uploads/photo/image/262/asdfa.jpg');
 }
 
 p {
@@ -66,12 +67,15 @@ p {
     border-color: #ddd;
 }
 
+.panel-default {
+  background-color: transparent;
+}
 .navbar-default {
     color: #02FFD0;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #007FFF;
+  color: #37A2CE;
 }
 
 

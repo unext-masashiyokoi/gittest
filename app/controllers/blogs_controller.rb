@@ -1,24 +1,27 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
-  before_filter :basic, only: [:new, :edit, :update, :destroy]
-skip_before_filter :verify_authenticity_token  
+  skip_before_filter :verify_authenticity_token  
+  
   def index
-  #  @blogs = Blog.order("created_at desc").page(params[:page]).per(10)
-    @q = Blog.search(params[:q])
+    @q = Blog.published.search(params[:q])
     @blogs = @q.result(distinct: true).page(params[:page]).per(100).order("created_at desc")
-   # @blogs = Blog.order("created_at desc").page(params[:page]).per(10)
   end
 
   def show
-    @blogs = Blog.all.order("created_at desc").page(params[:page]).per(1)
-    respond_with(@blog)
-  end
-
-  def all
-    @blogs = Blog.all.order("created_at desc")
-    respond_with(@blog)
+    if @blog.draft_flg == true
+      if !user_signed_in?
+        redirect_to action: 'index', status: 404
+      else
+        if @blog.user_id != current_user.id
+          redirect_to action: 'index', status: 404
+        else
+          respond_with(@blog)
+        end
+      end
+    else
+      respond_with(@blog)
+    end
   end
 
   def new
@@ -27,6 +30,9 @@ skip_before_filter :verify_authenticity_token
   end
 
   def edit
+    if @blog.user_id != current_user.id
+      redirect_to action: 'index', status: 404
+    end
   end
 
   def create
@@ -38,12 +44,12 @@ skip_before_filter :verify_authenticity_token
   end
 
   def update
-    blog_params_id = blog_params
-    blog_params_id["user_id"] = current_user.id
-    #raise current_user.id.inspect
-    #raise blog_params_id.inspect
-    @blog.update(blog_params_id)
-    respond_with(@blog)
+    if @blog.user_id != current_user.id
+      redirect_to action: 'index', status: 404
+    else
+      @blog.update(blog_params)
+      respond_with(@blog)
+    end
   end
 
   def destroy
@@ -57,6 +63,6 @@ skip_before_filter :verify_authenticity_token
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :content, :genre_ids => [], :photo_ids => [], :journal_ids => [])
+      params.require(:blog).permit(:title, :content, :draft_flg, :genre_ids => [], :photo_ids => [], :journal_ids => [])
     end
 end

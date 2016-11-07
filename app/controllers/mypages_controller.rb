@@ -1,7 +1,8 @@
 class MypagesController < ApplicationController
   def index
     @profiles = User.all
-    @journals_run = Journal.where("category = :category", category: "health-beauty").order("date DESC")
+    @user = User.find_by(id: current_user.id)
+    @blogs = Blog.where(user_id: @user.id).where(draft_flg: true).order("created_at desc")
   end
 
   def show

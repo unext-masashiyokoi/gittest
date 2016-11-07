@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand animsition-link" href="/home">KOAGENBLOG <i style="font-size:8px;">(seed dev)</i></a>
+      <a class="navbar-brand animsition-link" href="/home">KOAGENBLOG<i style="font-size:8px;">(seed)</i></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -16,27 +16,31 @@
       <ul class="nav navbar-nav">
         <li><a href="/blogs" class="animsition-link"><i class="fa fa-book"></i> <span class="nav-label">blogs</span></a></li>
         <li><a href="/photos" class="animsition-link"><i class="glyphicon glyphicon-picture"></i> <span class="nav-label">photos</span> </a></li>
-        <li><a href="/members" class="animsition-link"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">users</span> </a></li>
+        <li><a href="/members" class="animsition-link"><i class="fa fa-users"></i> <span class="nav-label">users</span> </a></li>
         <li><a href="/developpers" class="animsition-link"><i class="fa fa-gavel"></i> <span class="nav-label">developper</span> </a></li>
+                <% if user_signed_in? %>
+                <li>
+                    <a href="/mypages" class="animsition-link"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">mypage</span></a>
+                </li>
+                <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-align-justify"></i></a>
           <ul class="dropdown-menu">
+<% if !user_signed_in? %>
                 <li>
-                    <a href="/projects" class="animsition-link"><i class="glyphicon glyphicon-list-alt"></i> <span class="nav-label">projects</span> </a>
+                    <%= link_to  user_session_path do %><i class="fa fa-sign-in"></i> <span class="nav-label">log in</span><% end %>
                 </li>
+<% end %>
+<!--
                 <li>
                     <a href="/issues" class="animsition-link"><i class="glyphicon glyphicon-tasks" ></i> <span class="nav-label">issues</span> </a>
                 </li>
                 <li>
                     <a href="/journals" class="animsition-link"><i class="glyphicon glyphicon-floppy-saved" ></i> <span class="nav-label">journals</span> </a>
                 </li>
-                <% if user_signed_in? %>
-                <li>
-                    <a href="/memos" class="animsition-link"><i class="glyphicon glyphicon-pencil"></i> <span class="nav-label">memo</span><i class="glyphicon glyphicon-user"></i> </a>
-                </li>
-                <% end %>
+-->
           </ul>
         </li>
       </ul>

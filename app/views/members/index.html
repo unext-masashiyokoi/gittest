@@ -1,6 +1,5 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-
 <h1 class="h2">All Users</h1>
 
 <table class="table">
@@ -17,18 +16,12 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.name, user.name %></td>
-        <td><%= link_to image_tag(user.image, style: 'width:100px;', class:"img-circle"), user.name %></td>
+        <td><%= link_to user.name, user.account_id %></td>
+        <td><%= link_to lazy_image_tag(user.image, style: 'width:100px;', class:"img-circle"), user.account_id %></td>
        <td>
       <i class="fa fa-rss-square fa-lg fa-green"></i>
       <i class="fa fa-check-square fa-orange fa-lg"></i>
       </td>
- <!--       <td><%= user.profile %></td>
-        <td><% for genre in user.genres %><%= link_to genre.title, genre %>　<% end %></td> -->
-        <td><% if user_signed_in? %>
-        <% link_to 'Edit', edit_member_path(user) %>
-        <% end %>
-        </td>
       </tr>
     <% end %>
   </tbody>

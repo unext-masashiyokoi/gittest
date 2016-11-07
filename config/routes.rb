@@ -1,23 +1,14 @@
 Rails.application.routes.draw do
-  resources :issues
-
-  resources :genres
-
-  resources :equips
-
   resources :photos
-  
-  resources :memos
   resources :mypages
-
   resources :cycles
   resources :categories
-  resources :events
   resources :developpers
 
-  resources :blogs do 
-        get :all, on: :collection
+  resources :blogs do
+    resources :comments
   end
+
 
   resources :members
         get 'user/:id', to: 'users#show', as: :user
@@ -25,26 +16,19 @@ Rails.application.routes.draw do
        # get 'users', to: 'users#index', as: :users
    #     get ':users/:id/edit', to: 'users#edit', as: :edit_user
 
-  resources :projects
-
-  resources :personal_incomestatements
-
-  resources :income_statements
-
-  resources :journals
   resources :home
   resources :about
 
 get '/:username', to: 'users#show_by_username',as: :username
   root to: "home#index"
   
-  resources :profiles
-
 devise_for :users, :controllers => {
   :sessions      => "users/sessions",
   :registrations => "users/registrations",
   :passwords     => "users/passwords"
 }
+
+get '*path', controller: 'application', action: 'render_404'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

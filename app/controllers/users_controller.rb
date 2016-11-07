@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   respond_to :html
-  before_filter :basic, only: [:new, :edit, :update]
   skip_before_filter :verify_authenticity_token  
   
   def index
@@ -18,12 +17,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.order("created_at desc")
+    @blogs = Blog.where(user_id: @user.id).order("created_at desc")
   end
 
   def show_by_username
     @users = User.order("created_at desc")
-    @user = User.find_by(name: params[:username])
+    @user = User.find_by(account_id: params[:username])
+    @blogs = Blog.users(@user.id).published.order("created_at desc")
     render :template => "users/show"
   end
 
@@ -34,6 +34,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :image, :profile, :genre_ids => [])
+      params.require(:user).permit(:account_id, :name, :image, :profile, :genre_ids => [])
     end
 end

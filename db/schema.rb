@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626012121) do
+ActiveRecord::Schema.define(version: 20161102053301) do
 
   create_table "blog_genres", force: :cascade do |t|
     t.integer  "blog_id",    limit: 4
@@ -37,10 +37,11 @@ ActiveRecord::Schema.define(version: 20160626012121) do
   create_table "blogs", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "open_range", limit: 1
     t.integer  "user_id",    limit: 4
+    t.boolean  "draft_flg",  limit: 1,     default: false
   end
 
   create_table "calendars", force: :cascade do |t|
@@ -67,6 +68,16 @@ ActiveRecord::Schema.define(version: 20160626012121) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter",  limit: 255
+    t.text     "body",       limit: 65535
+    t.integer  "blog_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "comments", ["blog_id"], name: "index_comments_on_blog_id", using: :btree
 
   create_table "cycles", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -308,9 +319,11 @@ ActiveRecord::Schema.define(version: 20160626012121) do
     t.string   "name",                   limit: 255
     t.string   "image",                  limit: 255
     t.text     "profile",                limit: 65535
+    t.string   "account_id",             limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "blogs"
 end

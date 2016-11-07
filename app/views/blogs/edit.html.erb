@@ -1,3 +1,7 @@
+<%= javascript_tag do %>
+var $squire_description = '<%= raw @blog.content.gsub("'", "\\\\'") %>';
+<% end %>
+
 <h1>Editing Blog</h1>
 
 <%= render 'form' %>

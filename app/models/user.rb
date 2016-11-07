@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
   has_many :follows
   has_many :follows_as_target, class_name: 'Follow', foreign_key: 'target_user_id'
 
+  validates :name, presence: true, uniqueness: true
+  validates :account_id, presence: true, uniqueness: true
 end

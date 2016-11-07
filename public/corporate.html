@@ -11,8 +11,8 @@ body{
 }
 #csr {
   position: relative;
-  top: 0px;
-  left:0px;
+  left: -1150px;
+  top: -1250px;
 /*  width : 87px;
   height: 166px;
   opacity : 0.7;
@@ -21,6 +21,9 @@ body{
 img#csr {
 z-index: -100;
   width 2000px;
+}
+#s02 {
+  right: 2000px;
 }
 p.cut1 {
   position: relative;
@@ -86,7 +89,10 @@ window.addEventListener("devicemotion", function(evt){
   var gravity = 9.80665; 
   var csize = 1; 
   var wx = 100/2; 
-  var wy = 100/2; 
+  var wy = 100/2;
+console.log(evt.accelerationIncludingGravity);
+
+  if (evt.accelerationIncludingGravity !== "undefined"){
   var xg = evt.accelerationIncludingGravity.x; 
   var yg = evt.accelerationIncludingGravity.y;  
   var zg = evt.accelerationIncludingGravity.z;  
@@ -94,6 +100,7 @@ window.addEventListener("devicemotion", function(evt){
   var y = wy + (yg / gravity) * wy - csize/2;
   document.getElementById("csr").style.left = x-1200+"px";
   document.getElementById("csr").style.top = y-1300+"px";
+  }
 }, true);
 </script>
 </head>

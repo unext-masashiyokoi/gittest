@@ -1,10 +1,18 @@
   <div class="row">
     <div class="col-lg-12">
+      <p>id:<%= @user.account_id %></p>
       <%= image_tag(@user.image, class:"img-circle", style:"width:125px;") %>
       <strong><%= @user.name %></strong>
       <i class="fa fa-rss-square fa-lg fa-green"></i>
       <i class="fa fa-check-square fa-orange fa-lg"></i>
+<% if user_signed_in? && current_user.id == @user.id %>
+<%= link_to 'Edit', edit_member_path(@user) %>
+<% end %>
       <p><%= simple_format( @user.profile, {}, {:sanitize => false}) %></p>
+<% if user_signed_in? && current_user.id == @user.id %>
+<%= link_to 'New Blog', new_blog_path, class:"btn btn-success" %>
+<%= link_to 'New Photo', new_photo_path, class:"btn btn-success" %>
+<% end %>
       <p> 
       <i class="fa fa-rss-square fa-green fa-lg"> readers(public)</i></p>
       <% @user.follows_as_target.each do |follow| %>
@@ -15,13 +23,8 @@
         <%= link_to image_tag(follow.target_user.image, style: 'width:50px;', class:"img-circle"), follow.target_user.name %>
       <% end %>
       <p><i class="fa fa-check-square fa-orange fa-lg"> favolites(private)</i></p>
-     <!-- <p>genre:
-        <% for genre in Genre.all %>
-          <%= link_to genre.title, genre, class:"label" %>
-        <% end %>
-      </p> -->
   <hr>
-  <% @user.blogs.order("created_at desc").each do |blog| %>
+  <% @blogs.each do |blog| %>
   <p><%= link_to blog.title + ':' + blog.created_at.strftime('%Y/%m/%d'), blog %></p>
   <hr>
   <% end %>
@@ -29,7 +32,7 @@
   <p><%= link_to lazy_image_tag(photo.image), photo %></p>
   <hr>
   <% end %>
-<%= link_to 'Back', members_path, class:"animsition-link" %>
+<%= link_to 'Back', :back, class:"animsition-link" %>
     </div>
   </div>
 <svg class="icon icon-sign"><use xlink:href="#icon-sign"></use></svg>
