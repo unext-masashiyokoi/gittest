@@ -1,25 +1,22 @@
 <p id="notice"><%= notice %></p>
-<code>
-  &lt;a href="<%= photo_path(@photo) %>" &gt;&lt;img data-original=<%= image_path(@photo.image_url) %> &gt;&lt;/a&gt;
-</code>
-<%= image_tag @photo.image_url, width: '300' %>
-<p class"strong">
+<p class="lead">
+<%= link_to image_tag(@photo.user.image, class:"img-circle", style: 'width:50px;' ), username_path(@photo.user.account_id) %>
   <%= @photo.name %>
 </p>
 <p>
   <%= simple_format( @photo.comment, {}, {:sanitize => false}) %>
 </p>
 <p>
-  <%= @photo.created_at.strftime('%Y/%m/%d %H:%M') %>
+<%= image_tag @photo.image_url, width: '300' %>
 </p>
 <p>
-  posted by <%= link_to image_tag(@photo.user.image, class:"img-circle", style: 'width:20px;' ), @photo.user.name %><%= link_to @photo.user.name, username_path(@photo.user.name) %> <a href="/licence.html"><img src="/uploads/photo/image/229/allrightreserved.png" style="width:20px"> All rights reserved</a>
+  posted by <%= link_to image_tag(@photo.user.image, class:"img-circle", style: 'width:20px;' ), username_path(@photo.user.account_id) %><%= link_to @photo.user.name, username_path(@photo.user.account_id) %> <label class="label"><%= @photo.created_at.strftime('%Y/%m/%d %H:%M:%S') %></label><a href="/licence.html"><img src="/uploads/photo/image/229/allrightreserved.png" style="width:20px"> All rights reserved</a>
 </p>
 <code>
   &lt;a href="<%= photo_path(@photo) %>" &gt;&lt;img data-original=<%= image_path(@photo.image_url) %> &gt;&lt;/a&gt;
 </code>
 </p>
 <% if user_signed_in? %>
-<% link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
 <% end %>
 <%= link_to 'Back', :back %>
