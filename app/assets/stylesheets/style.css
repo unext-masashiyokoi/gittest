@@ -180,6 +180,9 @@ div.trimming > img {
   img {
     max-width: 600px;
   }
+  img.jumbotron {
+    max-width: 1000px;
+  }
   .masthead-brand {
     float: left;
   }
@@ -383,8 +386,10 @@ html{
 
 .blog-content img{
  display: block;
- margin-left: auto;
+ margin-left: 10px;
  margin-right: auto;
+ width: 50%;
+
 }
 
 div.dev > div > img{
@@ -421,4 +426,9 @@ div.dev > div > img{
   padding-right: 5px;
   padding-left: 5px;
   background-color: #222;
+}
+
+.jumbotron {
+  margin-bottom: 0px;
+  padding: 20px 0px 20px 0px;
 }

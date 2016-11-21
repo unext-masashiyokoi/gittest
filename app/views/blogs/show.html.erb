@@ -24,6 +24,11 @@
 <i class="glyphicon glyphicon-time"></i>
 <label class="label"><%= @blog.created_at.strftime('%Y/%m/%d %H:%M:%S') %></label>
 </p>
+<% if @blog.image.present? %>
+<p>
+<%= image_tag @blog.image, class: 'jumbotron' %>
+</p>
+<% end %>
 <div class="blog-content">
   <%= simple_format( @blog.content, {}, {:sanitize => false}) %>
 </div>

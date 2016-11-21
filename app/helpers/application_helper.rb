@@ -17,7 +17,7 @@ def lazy_image_tag(source, options={})
     options[:class] = "lazy #{options[:class]}"
   end
 
-  image_tag('https://upload.wikimedia.org/wikipedia/commons/2/28/InternetSlowdown_Day.gif', options)
+  image_tag('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Eclipse_2010_Hao_1.JPG/480px-Eclipse_2010_Hao_1.JPG', options)
 end
 
 end

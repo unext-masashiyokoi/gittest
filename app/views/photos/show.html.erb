@@ -4,10 +4,10 @@
   <%= @photo.name %>
 </p>
 <p>
-  <%= simple_format( @photo.comment, {}, {:sanitize => false}) %>
+<%= image_tag @photo.image_url, class: 'jumbotron' %>
 </p>
 <p>
-<%= image_tag @photo.image_url, width: '300' %>
+  <%= simple_format( @photo.comment, {}, {:sanitize => false}) %>
 </p>
 <p>
   posted by <%= link_to image_tag(@photo.user.image, class:"img-circle", style: 'width:20px;' ), username_path(@photo.user.account_id) %><%= link_to @photo.user.name, username_path(@photo.user.account_id) %> <label class="label"><%= @photo.created_at.strftime('%Y/%m/%d %H:%M:%S') %></label><a href="/licence.html"><img src="/uploads/photo/image/229/allrightreserved.png" style="width:20px"> All rights reserved</a>

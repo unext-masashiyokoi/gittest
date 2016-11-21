@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102053301) do
+ActiveRecord::Schema.define(version: 20161120110113) do
 
   create_table "blog_genres", force: :cascade do |t|
     t.integer  "blog_id",    limit: 4
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161102053301) do
     t.integer  "open_range", limit: 1
     t.integer  "user_id",    limit: 4
     t.boolean  "draft_flg",  limit: 1,     default: false
+    t.string   "image",      limit: 255
   end
 
   create_table "calendars", force: :cascade do |t|
@@ -71,10 +72,10 @@ ActiveRecord::Schema.define(version: 20161102053301) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter",  limit: 255
-    t.text     "body",       limit: 65535
+    t.text     "body",       limit: 16777215
     t.integer  "blog_id",    limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "comments", ["blog_id"], name: "index_comments_on_blog_id", using: :btree

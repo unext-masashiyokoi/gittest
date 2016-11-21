@@ -63,6 +63,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :content, :draft_flg, :genre_ids => [], :photo_ids => [], :journal_ids => [])
+      params.require(:blog).permit(:title, :content, :draft_flg, :image, :genre_ids => [], :photo_ids => [], :journal_ids => [])
     end
 end

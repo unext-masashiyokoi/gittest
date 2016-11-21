@@ -6,15 +6,13 @@
 <div class="col-md-12">
     <% @photos.each do |photo| %>
 <div class="col-xs-4"> 
-<!--       <td><%= photo.name %></td>
-        <td><%= photo.comment %></td> -->
-	<td><%= link_to photo do %><div class="trimming"><%= lazy_image_tag photo.image_url %></div><% end %></td>
-        <td>
+	<%= link_to photo do %><div class="trimming"><%= photo.name %><%= lazy_image_tag photo.image_url %></div><% end %>
+<td>
           <% if user_signed_in? %>
             <% link_to 'Edit', edit_photo_path(photo) %>
             <% link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
-       </td>
+</td>
 </div>
     <% end %>
 <%= paginate @photos %>
