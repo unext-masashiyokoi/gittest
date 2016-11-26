@@ -17,11 +17,11 @@
                     <% @blogs.each do |blog| %>
                       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 <hr>
-                      <h2 class="h4" style="height:17px;overflow:hidden;">
+                      <h2 class="h4" style="height:19px;overflow:hidden;">
                          <% if blog.content_flg == 'blog' %>
-                           <%= link_to blog.title, blog %>
+                           <i class="fa fa-newspaper-o" aria-hidden="true"></i> <%= link_to blog.title, blog %>
                          <% else %>
-                            <%= link_to blog.title, '/photos/' + blog.id.to_s %>
+                           <i class="fa fa-file-image-o" aria-hidden="true"></i> <%= link_to blog.title, '/photos/' + blog.id.to_s %>
                          <% end %>
                          
 </h2> 
@@ -39,11 +39,6 @@
           </div>
 <hr>
 
-              <% @users.each do |user| %>
-                <div class="col-xs-6 col-md-3 col-sm-4" style="height:160px;">
-                  <%= link_to lazy_image_tag(user.image, class:"img-circle", style: 'width:auto;height:auto;max-width:145px; max-height:145px;' ), user.account_id %>
-                </div>
-              <% end %>
             </div>
 
 <!-- Button trigger modal -->

@@ -5,10 +5,21 @@ class BlogsController < ApplicationController
   
   def index
     @q = Blog.published.search(params[:q])
-    @blogs = @q.result(distinct: true).page(params[:page]).per(100).order("created_at desc")
+    @blogs = @q.result(distinct: true).page(params[:page]).per(30).order("created_at desc")
   end
 
   def show
+    if @blog.draft_flg == false
+      @users_blog = Blog.select("id").where(user_id: @blog.user_id).published.order("created_at desc")
+      @next_page = []
+      for blog in @users_blog
+        @next_page << blog.id
+      end
+      @this_blog = @next_page.index(@blog.id)
+      @past_blog = @next_page[@this_blog + 1]
+      @future_blog = @next_page[@this_blog - 1]
+    
+    end 
     if @blog.draft_flg == true
       if !user_signed_in?
         redirect_to action: 'index', status: 404
