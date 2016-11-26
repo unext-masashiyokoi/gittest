@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   has_many :blogs, through: :blog_photos
   has_many :blog_photos
 
- # validates :image, presence: true
+  validates :name, presence: true
+  validates :image, presence: true
   validates :comment,    length: { maximum: 255 } 
 end

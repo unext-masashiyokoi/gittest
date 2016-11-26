@@ -39,7 +39,7 @@
                        <p><%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:auto;height:auto;max-width:45px; max-height:45px;' ), blog.user.account_id %><%= link_to blog.user.name, blog.user.account_id, class:"label" %>
                          <!--<i class="fa fa-rss-square fa-lg fa-green"></i>
                          <i class="fa fa-check-square fa-orange fa-lg"></i>-->
-                         <i class="glyphicon glyphicon-time"></i><label class="label"><%= blog.created_at.strftime('%y/%m/%d') %></lebel>
+                         <i class="glyphicon glyphicon-time"></i><label class="label"><%= blog.created_at.strftime('%y.%m.%d') %></lebel>
 </p>
                        <% if user_signed_in? %>
                          <% link_to 'Edit', edit_blog_path(blog) %>

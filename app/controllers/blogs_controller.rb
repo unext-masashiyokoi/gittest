@@ -10,9 +10,9 @@ class BlogsController < ApplicationController
 
   def show
     if @blog.draft_flg == false
-      @user_blogs = Blog.select("id").where(user_id: @blog.user_id).published.order("created_at desc")
-      @past_blog = past_blog(@user_blogs)
-      @future_blog = future_blog(@user_blogs)
+      user_blogs_id = Blog.select("id").where(user_id: @blog.user_id).published.order("created_at desc")
+      @past_blog = past_blog(user_blogs_id)
+      @future_blog = future_blog(user_blogs_id)
     end 
     if @blog.draft_flg == true
       if !user_signed_in?
