@@ -386,9 +386,9 @@ html{
 
 .blog-content img{
  display: block;
- margin-left: 10px;
+ margin-left: auto;
  margin-right: auto;
- width: 50%;
+ width: 70%;
 
 }
 

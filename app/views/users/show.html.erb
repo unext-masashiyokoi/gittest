@@ -25,7 +25,7 @@
       <p><i class="fa fa-check-square fa-orange fa-lg"> favolites(private)</i></p>
   <hr>
   <% @blogs.each do |blog| %>
-  <p><%= link_to blog.title + ':' + blog.created_at.strftime('%Y/%m/%d'), blog %></p>
+  <p><%= link_to blog.title + ' ' + blog.created_at.strftime('%y.%m.%d'), blog %></p>
   <hr>
   <% end %>
   <% @user.photos.order("created_at desc").each do |photo| %>

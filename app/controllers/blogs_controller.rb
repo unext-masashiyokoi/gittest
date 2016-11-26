@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :past_blog, :future_blog]
   respond_to :html
   skip_before_filter :verify_authenticity_token  
   
@@ -10,15 +10,9 @@ class BlogsController < ApplicationController
 
   def show
     if @blog.draft_flg == false
-      @users_blog = Blog.select("id").where(user_id: @blog.user_id).published.order("created_at desc")
-      @next_page = []
-      for blog in @users_blog
-        @next_page << blog.id
-      end
-      @this_blog = @next_page.index(@blog.id)
-      @past_blog = @next_page[@this_blog + 1]
-      @future_blog = @next_page[@this_blog - 1]
-    
+      @user_blogs = Blog.select("id").where(user_id: @blog.user_id).published.order("created_at desc")
+      @past_blog = past_blog(@user_blogs)
+      @future_blog = future_blog(@user_blogs)
     end 
     if @blog.draft_flg == true
       if !user_signed_in?
@@ -33,6 +27,25 @@ class BlogsController < ApplicationController
     else
       respond_with(@blog)
     end
+  end
+
+  def past_blog(user_blogs)
+    user_blog_ids = []
+    for blog in user_blogs
+      user_blog_ids << blog.id
+    end
+    this_blog = user_blog_ids.index(@blog.id)
+    user_blog_ids[this_blog] != user_blog_ids.last ? Blog.find(user_blog_ids[this_blog + 1]) : nil
+  end
+
+  def future_blog(user_blogs)
+    user_blog_ids = []
+    for blog in user_blogs
+      user_blog_ids << blog.id
+    end
+    @ddd = user_blog_ids.index(@blog.id)
+    this_blog = user_blog_ids.index(@blog.id)
+    this_blog != 0 ? Blog.find(user_blog_ids[this_blog - 1]) : nil
   end
 
   def new

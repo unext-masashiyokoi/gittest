@@ -17,11 +17,11 @@
 <p id="notice"><%= notice %></p>
 <% if @blog.draft_flg != 1 %>
 <div class="row">
-<% if  @this_blog != 0 %>
-<div class="pull-left"><%= link_to 'future blog', '/blogs/' + @future_blog.to_s %></div>
+<% if @future_blog != nil %>
+<div class="pull-left"><%= link_to @future_blog.title.truncate(10, omission: '...') + ' ' + @future_blog.created_at.strftime('%y.%m.%d'), '/blogs/' + @future_blog.id.to_s %></div>
 <% end %>
 <% if @past_blog != nil %>
-<div class="pull-right"><%= link_to 'past blog', '/blogs/' + @past_blog.to_s %></div>
+<div class="pull-right"><%= link_to @past_blog.title.truncate(10, omission: '...') + ' ' + @past_blog.created_at.strftime('%y.%m.%d'), '/blogs/' + @past_blog.id.to_s %></div>
 <% end %>
 </div>
 <% end %>
@@ -51,11 +51,11 @@
 </p>
 <% if @blog.draft_flg != 1 %> 
 <div class="row">
-<% if @this_blog != 0 %>
-<div class="pull-left"><%= link_to 'future blog', '/blogs/' + @future_blog.to_s %></div>
+<% if @future_blog != nil %>
+<div class="pull-left"><%= link_to @future_blog.title.truncate(10, omission: '...') + ' ' + @future_blog.created_at.strftime('%y.%m.%d'), '/blogs/' + @future_blog.id.to_s %></div>
 <% end %>
 <% if @past_blog != nil %>
-<div class="pull-right"><%= link_to 'past blog', '/blogs/' + @past_blog.to_s %></div>
+<div class="pull-right"><%= link_to @past_blog.title.truncate(10, omission: '...') + ' ' + @past_blog.created_at.strftime('%y.%m.%d'), '/blogs/' + @past_blog.id.to_s %></div>
 <% end %>
 </div>
 <% end %>
