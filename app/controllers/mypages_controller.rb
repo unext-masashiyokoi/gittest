@@ -1,4 +1,5 @@
 class MypagesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @profiles = User.all
     @user = User.find_by(id: current_user.id)

@@ -1,8 +1,7 @@
 <%= form_for(@blog) do |f| %>
   <% if @blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
-
+    <div class="alert alert-danger" role="alert">
+      <h2 class="h3"><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
       <ul>
       <% @blog.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,31 +10,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
     <%= f.text_field :title, class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :content %><br>
     <%= f.text_area :content, class:"form-control", rows:20 %>
     <% f.text_area :content, :id=>"seditor" %>
   </div>
-  <div class=field>
-    <%= f.label :image %><br>
+  <div class="form-group">
+    <%= f.label "top image" %><br>
     <%= f.file_field :image, :class => "btn btn-small btn-primary btn-inverse" %>
   </div>
   <% for photo in current_user.photos.limit(20).order('id desc') %>
-  <div class="field">
-    <%= radio_button_tag "blog[photo_ids][]", photo.id, @blog.photos.include?(photo) %>
+  <div class="form-group">
     <%= photo.name %>
     <code>
       &lt;a href="<%= photo_path(photo) %>" &gt;&lt;img data-original=<%= image_path(photo.image_url) %> &gt;&lt;/a&gt;
     </code>
   </div>
   <% end %>
-  <div class="field">
-    <%= f.label :draft_flg %><br>
-    <%= f.check_box :draft_flg, class:"form-control" %>
+  <div class="checkbox">
+    <label>
+    <%= f.check_box :draft_flg %> 下書き
+    </label>
   </div>
   <div class="actions">
     <%= f.submit class:"form-control" %>

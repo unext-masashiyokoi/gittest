@@ -1,8 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-#blogready = ->
-#  $('#calendarBlogs').fullCalendar events: '/blogs.json'
+blogready = ->
+  $('#calendarBlogs').fullCalendar events: '/blogs.json',
 
 #$(document).ready(blogready)
 #$(document).on 'page:load', ->

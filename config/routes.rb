@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :cycles
   resources :categories
   resources :developpers
+  resources :events
+  resources :projects
+  resources :issues
+  resources :journals
 
   resources :blogs do
     resources :comments

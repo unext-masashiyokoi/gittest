@@ -18,6 +18,11 @@
     <% if user_signed_in? %>
     <p style="text-shadow: 1px 1px 3px #fff;">こんにちわ<%= link_to current_user.name, username_path(current_user.account_id) %>さん</p>
     <% end %>
+<% if notice.present? %>
+<div class="alert alert-info" role="alert">
+  <p id="notice"><%= notice %></p>
+</div>
+<% end %>
     <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

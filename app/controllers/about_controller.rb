@@ -6,5 +6,7 @@ class AboutController < ApplicationController
    # @aaaaaaa = Constants::AAAAAAA
   end 
 
+  def blog_rules_20161219
+  end
 
 end

@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_filter :basic, only: [:new, :edit, :update, :destroy]
 skip_before_filter :verify_authenticity_token
   respond_to :html
 

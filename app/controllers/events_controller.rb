@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   respond_to :html
 skip_before_filter :verify_authenticity_token
   def index
-    @events = Event.all.order('start asc').where("end >= ?", Time.now).where('open_range_id = 1')
+    #@events = Event.all.order('start asc').where("end >= ?", Time.now).where('open_range_id = 1')
+    @events = Event.all.order('start desc').where('open_range_id = 1')
   end
 
   def show

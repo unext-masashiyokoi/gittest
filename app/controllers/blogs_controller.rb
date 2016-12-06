@@ -2,7 +2,6 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :past_blog, :future_blog]
   respond_to :html
   skip_before_filter :verify_authenticity_token  
-  
   def index
     @q = Blog.published.search(params[:q])
     @blogs = @q.result(distinct: true).page(params[:page]).per(30).order("created_at desc")
