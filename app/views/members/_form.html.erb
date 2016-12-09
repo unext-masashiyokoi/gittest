@@ -30,7 +30,7 @@
   </div>
   <% end %>
 -->
-<%= image_tag(@member.image, style:"width:200px;") %>
+<%= image_tag(@member.image, class:"img-thumbnail", style:"width:200px;") %>
   <div class=field>
     <%= f.label :image %><br>
     <%= f.file_field :image,  class:"form-control"%>

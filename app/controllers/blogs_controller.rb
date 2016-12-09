@@ -3,13 +3,13 @@ class BlogsController < ApplicationController
   respond_to :html
   skip_before_filter :verify_authenticity_token  
   def index
-    @q = Blog.published.search(params[:q])
+    @q = Blog.published.published_before(Time.now()).search(params[:q])
     @blogs = @q.result(distinct: true).page(params[:page]).per(30).order("created_at desc")
   end
 
   def show
     if @blog.draft_flg == false
-      user_blogs_id = Blog.select("id").where(user_id: @blog.user_id).published.order("created_at desc")
+      user_blogs_id = Blog.select("id").where(user_id: @blog.user_id).published.published_before(Time.now()).order("created_at desc")
       @past_blog = past_blog(user_blogs_id)
       @future_blog = future_blog(user_blogs_id)
     end 
@@ -86,6 +86,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :content, :draft_flg, :image, :genre_ids => [], :photo_ids => [], :journal_ids => [])
+      params.require(:blog).permit(:title, :content, :draft_flg, :image, :published_at, :genre_ids => [], :photo_ids => [], :journal_ids => [])
     end
 end

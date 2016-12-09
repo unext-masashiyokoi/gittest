@@ -1,15 +1,11 @@
          <div class="row">
             <div class="col-lg-12">
-<% if user_signed_in? %>
-<%= link_to 'New Blog', new_blog_path, class:"btn btn-success" %>
-<% end %>
-<% if user_signed_in? %>
-<%= link_to 'New Photo', new_photo_path, class:"btn btn-success" %>
-<% end %>
 <p><%= link_to 'プロフィール確認' , current_user.account_id %></p>
 <p><%= link_to 'プロフィール変更' , edit_member_path(current_user) %></p>
 <p><%= link_to 'パスワード・アドレス変更', edit_user_registration_path %></p>
 <p><%= link_to "log out", destroy_user_session_path , method: :delete %></p>
+<%= link_to 'New Blog', new_blog_path, class:"btn btn-success" %>
+<%= link_to 'New Photo', new_photo_path, class:"btn btn-success" %>
   <hr>
   <% @blogs.each do |blog| %>
 下書きブログ

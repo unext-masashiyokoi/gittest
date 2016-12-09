@@ -16,11 +16,11 @@
       <p> 
       <i class="fa fa-rss-square fa-green fa-lg"> readers(public)</i></p>
       <% @user.follows_as_target.each do |follow| %>
-        <%= link_to image_tag(follow.user.image, style: 'width:50px;', class:"img-circle"), follow.user.name %>
+        <%= link_to image_tag(follow.user.image, style: 'width:50px;', class:"img-circle"), follow.user.account_id %>
       <% end %>
       <p><i class="fa fa-rss-square fa-lg"> reading(public)</i></p>
       <% @user.follows.each do |follow| %>
-        <%= link_to image_tag(follow.target_user.image, style: 'width:50px;', class:"img-circle"), follow.target_user.name %>
+        <%= link_to image_tag(follow.target_user.image, style: 'width:50px;', class:"img-circle"), follow.target_user.account_id %>
       <% end %>
       <p><i class="fa fa-check-square fa-orange fa-lg"> favolites(private)</i></p>
   <hr>

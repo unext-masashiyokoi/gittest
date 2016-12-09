@@ -31,6 +31,10 @@
     </code>
   </div>
   <% end %>
+  <div class="field">
+    <%= f.label '公開日' %><br>
+    <%= f.datetime_select :published_at, class:"form-control" %>
+  </div>
   <div class="checkbox">
     <label>
     <%= f.check_box :draft_flg %> 下書き

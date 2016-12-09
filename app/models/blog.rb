@@ -17,5 +17,6 @@ class Blog < ActiveRecord::Base
   end
 
   scope :published, -> { where draft_flg: false }
+  scope :published_before, -> (time){ where("published_at < ?", time) }
   scope :users, ->(user_id) { where("user_id = ?", user_id) }
 end

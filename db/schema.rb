@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120110113) do
+ActiveRecord::Schema.define(version: 20161209032452) do
 
   create_table "blog_genres", force: :cascade do |t|
     t.integer  "blog_id",    limit: 4
@@ -35,14 +35,16 @@ ActiveRecord::Schema.define(version: 20161120110113) do
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.integer  "open_range", limit: 1
-    t.integer  "user_id",    limit: 4
-    t.boolean  "draft_flg",  limit: 1,     default: false
-    t.string   "image",      limit: 255
+    t.string   "title",        limit: 255
+    t.text     "content",      limit: 65535
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.integer  "open_range",   limit: 1
+    t.integer  "user_id",      limit: 4
+    t.boolean  "draft_flg",    limit: 1,     default: false
+    t.string   "image",        limit: 255
+    t.datetime "publised_at"
+    t.datetime "published_at"
   end
 
   create_table "calendars", force: :cascade do |t|

@@ -9,8 +9,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    respond_with @user,  :location => members_path
+    if @user.update(user_params)
+      flash[:notice] = 'your profile was successfully updated.'
+    end
+    respond_with @user,  :location => mypages_path
   end
 
   def edit

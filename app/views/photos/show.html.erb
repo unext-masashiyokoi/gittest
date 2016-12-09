@@ -4,7 +4,7 @@
   <%= @photo.name %>
 </p>
 <p>
-<%= image_tag @photo.image_url, class: 'jumbotron' %>
+<%= image_tag @photo.image_url, class: 'img-thumbnail' %>
 </p>
 <p>
   <%= simple_format( @photo.comment, {}, {:sanitize => false}) %>
