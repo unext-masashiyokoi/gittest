@@ -5,6 +5,7 @@ skip_before_filter :verify_authenticity_token
   def index
     #@events = Event.all.order('start asc').where("end >= ?", Time.now).where('open_range_id = 1')
     @events = Event.all.order('start desc').where('open_range_id = 1')
+    @events_update = Event.all.order('updated_at desc').where('open_range_id = 1').where("updated_at >= ?", Time.now - 10.days)
   end
 
   def show

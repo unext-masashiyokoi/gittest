@@ -1,0 +1,26 @@
+                    <% @blogs.each do |blog| %>
+                      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height:190px;">
+<hr>
+                      <h2 class="h4" style="height:17px;overflow:hidden;"><%= link_to blog.title, blog %></h2>
+                      <div class="row">
+                      <div class=<%= blog.image.present? ? "col-xs-9 col-sm-9" : "col-xs-12 col-sm-12" %> >
+                       <p style="height:82px;overflow:hidden;"><%= link_to rm_html_tag(blog.content), blog , class:""%></p>
+                      </div>
+                      <% if blog.image.present? %>
+                      <div class="col-xs-3 col-sm-3" style="padding-left:1px;">
+                        <%= link_to blog do %><%= lazy_image_tag blog.image, style: 'width:98%;' %><% end %>
+                      </div>
+                      <% end %>
+                      </div>
+                       <p><%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:auto;height:auto;max-width:45px; max-height:45px;' ), blog.user.account_id %><%= link_to blog.user.name, blog.user.account_id, class:"label" %>
+                         <!--<i class="fa fa-rss-square fa-lg fa-green"></i>
+                         <i class="fa fa-check-square fa-orange fa-lg"></i>-->
+                         <i class="glyphicon glyphicon-time"></i><label class="label"><%= blog.published_at.strftime('%y.%m.%d') %></lebel>
+</p>
+                       <% if user_signed_in? %>
+                         <% link_to 'Edit', edit_blog_path(blog) %>
+                         <% link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+                       <% end %>
+                    </div>
+                    <% end %>
+

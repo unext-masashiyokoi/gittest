@@ -1,0 +1,4 @@
+$('#blogs').append("<%= escape_javascript(render 'blogs', object: @blogs) %>")
+$("#more_link").replaceWith("<%= escape_javascript(
+  link_to_next_page(@blogs, 'more', remote: true, id: 'more_link')
+) %>");

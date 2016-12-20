@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   #  result = Net::HTTP.get(json)
    # @uri = JSON.parse(result)
    # @aaaaaaa = Constants::AAAAAAA
+    @events_update = Event.all.order('updated_at desc').where('open_range_id = 1').where("updated_at >= ?", Time.now - 10.days)
   end 
 
 

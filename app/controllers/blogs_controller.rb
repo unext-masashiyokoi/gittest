@@ -4,7 +4,7 @@ class BlogsController < ApplicationController
   skip_before_filter :verify_authenticity_token  
   def index
     @q = Blog.published.published_before(Time.now()).search(params[:q])
-    @blogs = @q.result(distinct: true).page(params[:page]).per(30).order("created_at desc")
+    @blogs = @q.result(distinct: true).page(params[:page]).per(12).order("created_at desc")
   end
 
   def show

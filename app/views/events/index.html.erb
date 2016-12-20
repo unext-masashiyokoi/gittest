@@ -1,4 +1,10 @@
          <div class="row">
+<h3>Update lists</h3>
+<% @events_update.each do |event| %>
+  <label>
+    【<%= link_to event.title, event %><%= event.start.strftime('%y/%m/%d') %> <i class="label"><%= event.updated_at.strftime('%m/%d %H:%M') %>updated</i>】
+  </label>
+<% end %>
             <div class="col-lg-12">
 <div style="max-width:400px;">
  <div id="calendar"></div>
