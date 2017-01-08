@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+<% if @future_photo != nil %>
+<div class="pull-left"><%= link_to @future_photo.name.truncate(10, omission: '...') + ' ' + @future_photo.created_at.strftime('%y.%m.%d'), '/photos/' + @future_photo.id.to_s %></div>
+<% end %>
+<% if @past_photo != nil %>
+<div class="pull-right"><%= link_to @past_photo.name.truncate(10, omission: '...') + ' ' + @past_photo.created_at.strftime('%y.%m.%d'), '/photos/' + @past_photo.id.to_s %></div>
+<% end %>
+</div>
 <p class="lead">
 <%= link_to image_tag(@photo.user.image, class:"img-circle", style: 'width:50px;' ), username_path(@photo.user.account_id) %>
   <%= @photo.name %>
@@ -20,3 +28,11 @@
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <% end %>
 <%= link_to 'Back', :back %>
+<div class="row">
+<% if @future_photo != nil %>
+<div class="pull-left"><%= link_to @future_photo.name.truncate(10, omission: '...') + ' ' + @future_photo.created_at.strftime('%y.%m.%d'), '/photos/' + @future_photo.id.to_s %></div>
+<% end %>
+<% if @past_photo != nil %>
+<div class="pull-right"><%= link_to @past_photo.name.truncate(10, omission: '...') + ' ' + @past_photo.created_at.strftime('%y.%m.%d'), '/photos/' + @past_photo.id.to_s %></div>
+<% end %>
+</div>

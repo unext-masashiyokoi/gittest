@@ -1,6 +1,5 @@
   <div class="row">
     <div class="col-lg-12">
-      <p>id:<%= @user.account_id %></p>
       <%= image_tag(@user.image, class:"img-circle", style:"width:125px;") %>
       <strong><%= @user.name %></strong>
       <i class="fa fa-rss-square fa-lg fa-green"></i>
@@ -9,6 +8,11 @@
 <%= link_to 'Edit', edit_member_path(@user) %>
 <% end %>
       <p><%= simple_format( @user.profile, {}, {:sanitize => false}) %></p>
+<p>
+<button type="button" class="btn btn-default btn-sm">
+  id:<%= @user.account_id %>
+</button>
+</p>
 <% if user_signed_in? && current_user.id == @user.id %>
 <%= link_to 'New Blog', new_blog_path, class:"btn btn-success" %>
 <%= link_to 'New Photo', new_photo_path, class:"btn btn-success" %>
@@ -25,7 +29,7 @@
       <p><i class="fa fa-check-square fa-orange fa-lg"> favolites(private)</i></p>
   <hr>
   <% @blogs.each do |blog| %>
-  <p><%= link_to blog.title + ' ' + blog.created_at.strftime('%y.%m.%d'), blog %></p>
+  <p><%= link_to blog.title + ' ' + blog.published_at.strftime('%y.%m.%d'), blog %></p>
   <hr>
   <% end %>
   <% @user.photos.order("created_at desc").each do |photo| %>

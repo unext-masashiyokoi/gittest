@@ -19,13 +19,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @blogs = Blog.where(user_id: @user.id).order("created_at desc")
+    @blogs = Blog.where(user_id: @user.id).order("publised_at desc")
   end
 
   def show_by_username
     @users = User.order("created_at desc")
     @user = User.find_by(account_id: params[:username])
-    @blogs = Blog.users(@user.id).published.order("created_at desc")
+    @blogs = Blog.users(@user.id).published.order("published_at desc")
     render :template => "users/show"
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209032452) do
+ActiveRecord::Schema.define(version: 20170108014436) do
 
   create_table "blog_genres", force: :cascade do |t|
     t.integer  "blog_id",    limit: 4
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20161209032452) do
     t.integer  "user_id",      limit: 4
     t.boolean  "draft_flg",    limit: 1,     default: false
     t.string   "image",        limit: 255
-    t.datetime "publised_at"
     t.datetime "published_at"
   end
 
@@ -323,10 +322,21 @@ ActiveRecord::Schema.define(version: 20161209032452) do
     t.string   "image",                  limit: 255
     t.text     "profile",                limit: 65535
     t.string   "account_id",             limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "content",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   add_foreign_key "comments", "blogs"
 end

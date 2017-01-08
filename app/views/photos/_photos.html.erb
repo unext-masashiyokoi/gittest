@@ -1,0 +1,11 @@
+    <% @photos.each do |photo| %>
+<div class="col-xs-4">
+        <%= link_to photo do %><div class="trimming"><label class="label"><%= photo.name.truncate(7, omission: '..') %></label><%= image_tag photo.image_url %></div><% end %>
+<td>
+          <% if user_signed_in? %>
+            <% link_to 'Edit', edit_photo_path(photo) %>
+            <% link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+</td>
+</div>
+    <% end %>

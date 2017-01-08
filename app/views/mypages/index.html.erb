@@ -10,6 +10,7 @@
   <% @blogs.each do |blog| %>
 下書きブログ
   <p><%= link_to blog.title + ':' + blog.created_at.strftime('%Y/%m/%d'), blog %></p>
+<%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
   <hr>
   <% end %>
             </div>

@@ -5,12 +5,36 @@ class PhotosController < ApplicationController
 
   def index
  #   @photos = Photo.all.order('id desc')
-    @photos = Photo.all.order('id desc').where('image is not null').page(params[:page]).per(108)
-    respond_with(@photos)
+    @photos = Photo.all.order('id desc').where('image is not null').page(params[:page]).per(18)
+#    respond_with(@photos)
   end
 
   def show
+
+    user_photos_id = Photo.select("id").where(user_id: @photo.user_id).order("created_at desc")  
+    @past_photo = past_photo(user_photos_id)
+    @future_photo = future_photo(user_photos_id)
+ 
     respond_with(@photo)
+  end
+
+  def past_photo(user_photos)
+    user_photo_ids = []
+    for photo in user_photos
+      user_photo_ids << photo.id
+    end
+    this_photo = user_photo_ids.index(@photo.id)
+    user_photo_ids[this_photo] != user_photo_ids.last ? Photo.find(user_photo_ids[this_photo + 1]) : nil
+  end
+
+  def future_photo(user_photos)
+    user_photo_ids = []
+    for photo in user_photos
+      user_photo_ids << photo.id
+    end
+    @ddd = user_photo_ids.index(@photo.id)
+    this_photo = user_photo_ids.index(@photo.id)
+    this_photo != 0 ? Photo.find(user_photo_ids[this_photo - 1]) : nil
   end
 
   def new

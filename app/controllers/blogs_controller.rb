@@ -4,14 +4,15 @@ class BlogsController < ApplicationController
   skip_before_filter :verify_authenticity_token  
   def index
     @q = Blog.published.published_before(Time.now()).search(params[:q])
-    @blogs = @q.result(distinct: true).page(params[:page]).per(12).order("created_at desc")
+    @blogs = @q.result(distinct: true).page(params[:page]).per(12).order("published_at desc")
   end
 
   def show
     if @blog.draft_flg == false
-      user_blogs_id = Blog.select("id").where(user_id: @blog.user_id).published.published_before(Time.now()).order("created_at desc")
+      user_blogs_id = Blog.select("id").where(user_id: @blog.user_id).published.published_before(Time.now()).order("published_at desc")
       @past_blog = past_blog(user_blogs_id)
       @future_blog = future_blog(user_blogs_id)
+      @user = User.find(@blog.user_id)
     end 
     if @blog.draft_flg == true
       if !user_signed_in?
