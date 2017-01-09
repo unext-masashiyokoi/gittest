@@ -1,4 +1,4 @@
-<div class="container">
+<div class="row">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -39,14 +39,6 @@
 <p>
   <strong>Place:</strong>
   <%= @journal.place %>
-</p>
-
-<p>
-  <strong>Move:</strong>
-<% for move in @journal.moves %>
-<%= link_to move.distance, move %>
-<%= link_to move.transportation, move %>
-<% end %>
 </p>
 
 <p>

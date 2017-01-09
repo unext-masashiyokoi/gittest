@@ -12,7 +12,7 @@ class MembersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] = 'your profile was successfully updated.'
     end
-    respond_with @user,  :location => mypage_path
+    respond_with @user, :location => mypage_path
   end
 
   def show
