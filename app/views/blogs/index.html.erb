@@ -1,37 +1,32 @@
-  <div class="row">
-<div class="col-xs-12">
-<%= search_form_for @q do |f| %>
-<div class="input-group">
-  <%# start 特定の文字列で始まる商品名で検索 %>
-  <%= f.search_field :title_or_content_or_user_name_cont, class:"form-control" %>
-  <%# 検索ボタン %>
-  <span class="input-group-btn">
-  <%= f.submit  class:"btn btn-primary" %>
-  </span>
+<div class="row">
+  <div class="col-xs-12">
+  <%= search_form_for @q do |f| %>
+    <div class="input-group">
+      <%= f.search_field :title_or_content_or_user_name_cont, class:"form-control" %>
+      <span class="input-group-btn">
+        <%= f.submit  class:"btn btn-primary" %>
+      </span>
+    </div>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to 'New Blog', new_blog_path, class:"btn btn-success" %>
+  <% end %>
+  </div>
 </div>
-<% end %>
-<% if user_signed_in? %>
-<%= link_to 'New Blog', new_blog_path, class:"btn btn-success" %>
-<% end %>
+<div class="row">
+  <div id="blogs">
+    <%= render 'blogs' %>
+  </div>
 </div>
-</div>
-  <div class="row">
-<div id="blogs">
-  <%= render 'blogs' %>
-</div>
-          </div>
 <hr>
 <p>
-<button type="button" class="btn btn-default btn-lg btn-block">
-<%= link_to_next_page @blogs, '     more blogs   ', remote: true, id: 'more_link' %>
-</button>
+  <button type="button" class="btn btn-default btn-lg btn-block">
+    <%= link_to_next_page @blogs, 'mare blogs', remote: true, id: 'more_link' %>
+  </button>
 </p>
-<!-- <div id="calendarBlogs"></div> -->
-
-<div style="max-width:400px;">
- <div id="calendarBlogs"></div>
+<div style="max-width:100%;">
+  <div id="calendarBlogs"></div>
 </div>
-
 <script>
 $(window).scroll( function() {
      var pager = $("#more_link");

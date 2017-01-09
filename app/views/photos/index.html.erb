@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-<% if user_signed_in? %>
-<%= link_to 'New Photo', new_photo_path, class:"btn btn-success" %>
-<% end %>
-<div class="col-md-12">
-<div id="photos">
-  <%= render 'photos' %>
-</div>
-<p>
-<button type="button" class="btn btn-default btn-lg btn-block">
-<%= link_to_next_page @photos, 'more photos', remote: true, id: 'more_link' %>
-</button>
-</p>
-</div>
+  <% if user_signed_in? %>
+    <%= link_to 'New Photo', new_photo_path, class:"btn btn-success" %>
+  <% end %>
+  <div class="col-md-12">
+    <div id="photos">
+      <%= render 'photos' %>
+    </div>
+    <p>
+      <button type="button" class="btn btn-default btn-lg btn-block">
+        <%= link_to_next_page @photos, 'more photos', remote: true, id: 'more_link' %>
+      </button>
+    </p>
+  </div>
 </div>
 <script>
 $(window).scroll( function() {

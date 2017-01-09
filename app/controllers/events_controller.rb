@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   respond_to :html
-skip_before_filter :verify_authenticity_token
+  #protect_from_forgery :except => ["destroy"]
   def index
     #@events = Event.all.order('start asc').where("end >= ?", Time.now).where('open_range_id = 1')
-    @events = Event.all.order('start desc').where('open_range_id = 1')
+    @events = Event.all.order('start desc').where('open_range_id = 1').joins(:open_range).joins(:project)
     @events_update = Event.all.order('updated_at desc').where('open_range_id = 1').where("updated_at >= ?", Time.now - 10.days)
   end
 

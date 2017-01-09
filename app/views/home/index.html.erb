@@ -29,11 +29,11 @@
                       <div class=<%= blog.photos.present? ? "col-xs-9 col-sm-9" : "col-xs-12 col-sm-12" %> >
                       </div>
                       </div>
-                       <p><%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:auto;height:auto;max-width:45px; max-height:45px;' ), blog.user.account_id %><%= link_to blog.user.name, blog.user.account_id, class:"label" %>
+                       <div style="height: 45px;"><%= link_to image_tag(blog.user.image, class:"img-circle", style: 'width:auto;height:auto;max-width:40px; max-height:40px;' ), blog.user.account_id %><%= link_to blog.user.name, blog.user.account_id, class:"label" %>
                          <!--<i class="fa fa-rss-square fa-lg fa-green"></i>
                          <i class="fa fa-check-square fa-orange fa-lg"></i>-->
                          <i class="glyphicon glyphicon-time"></i><label class="label"><%= blog.created_at.strftime('%y.%m.%d') %></lebel>
-</p>
+</div>
                     </div>
                     <% end %>
           </div>

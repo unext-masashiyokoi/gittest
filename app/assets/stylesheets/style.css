@@ -162,7 +162,6 @@ div.trimming {
 
 div.trimming > img {
   max-width: 99%;
-  max-height: 99%;
 }
 
 
@@ -283,10 +282,9 @@ div.trimming > img {
   }
 
   div.trimming > img {
-   width: 98%;
-   height: 98%;
+    max-width: 98%;
+    width:;
   }
-
 
 }
 
