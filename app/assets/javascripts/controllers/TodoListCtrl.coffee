@@ -1,4 +1,3 @@
-
 angular.module('sampleApp').controller "TodoListCtrl", ($scope) ->
   # 初期データを用意するメソッド
   # $scope.list.name  としてアクセスできる

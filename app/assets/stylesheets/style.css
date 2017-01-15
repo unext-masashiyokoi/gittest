@@ -22,22 +22,8 @@ a:visited
 }
 
 /*
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #081e3b;
-}
-
-.navbar-toggle:hover > .icon-bar {
-    background-color: #f9f0dc;
-}
-
-.navbar-default .navbar-brand:hover {
-    color: #f9f0dc;
-}
-*/
-/*
  *  * Base structure
  *   */
-
 
 .container-fluid {
     padding-right: 5px;
@@ -45,26 +31,25 @@ a:visited
 }
 
 body {
-  width: 94%;
+  width: 95%;
   background-color: white; 
   font-family: "メイリオ", "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
   color: azure;
   margin: auto;
   padding-top: 50px;
   padding-bottom: 30px;
-//  text-align: center;
   text-shadow: 1.5px 1.5px 2px rgba(0,0,0,1);
   background-image: url('/uploads/photo/image/262/asdfa.jpg');
-/* 画像を常に天地左右の中央に配置 */
-background-position: center center;
-/* 画像をタイル状に繰り返し表示しない */
-background-repeat: no-repeat;
-/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
-background-attachment: fixed;
-/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-background-size: cover;
-/* 背景画像が読み込まれる前に表示される背景のカラー */
-background-color: #464646;
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  background-color: #464646;
 }
 
 p {
@@ -87,7 +72,6 @@ p {
 .navbar-inverse .navbar-brand {
   color: #37A2CE;
 }
-
 
 input, text, textarea, select {
   color: black;
@@ -206,7 +190,6 @@ div.trimming > img {
 
 }
 
-
 @media (min-width: 992px) {
   div.trimming {
     width: 320px;
@@ -215,7 +198,6 @@ div.trimming > img {
   }
 
 }
-
 
 @media (min-width: 1200px) {
   div.trimming {
@@ -301,31 +283,15 @@ div.trimming > img {
 .collapse.in {
     display: block;
     visibility: visible;
-//    background-color: black;
 }
 
 .navbar-default {
     border-color: #e7e7e7;
-//    background-color: black;
 }
-}
-
-/* iframe要素内でサイズ指定している場合は必要なし */
-.iframe {
-  width: 560px;
-  height: 315px;
-}
-
-/*for prettify look
-body {
-    padding: 1em;
-}
-*/
-
 
 #container { 
-    -webkit-animation-duration: 1s; 
-    animation-duration: 1s; 
+  -webkit-animation-duration: 1s; 
+  animation-duration: 1s; 
   -webkit-animation-fill-mode: both; 
   animation-fill-mode: both; 
 } 
@@ -392,18 +358,17 @@ html{
     width: 100%;
 }
 
+/* ブログ記事内の画像 */
 .blog-content img{
- display: block;
- margin-left: auto;
- margin-right: auto;
- width: 70%;
-
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
 }
 
 div.dev > div > img{
- margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-
 
 .fa-green:before
 {
