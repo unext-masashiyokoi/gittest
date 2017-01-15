@@ -16,6 +16,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore secretary files
 /config/database.yml
 /config/secrets.yml
 
+# Ignore Gemfile.lock
+/Gemfile.lock

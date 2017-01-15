@@ -27,7 +27,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails', '~> 3.1.0'
 gem 'carrierwave'
 gem 'io-console'
+gem 'twitter-bootstrap-rails'
 gem 'whenever', :require => false
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
 gem 'angular-ui-calendar-rails'

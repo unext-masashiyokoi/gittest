@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :videos
-
   resources :photos
   resources :mypages
   resources :cycles
@@ -15,26 +14,23 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-
   resources :members
         get 'user/:id', to: 'users#show', as: :user
         patch 'user/:id', to: 'users#update'
-       # get 'users', to: 'users#index', as: :users
-   #     get ':users/:id/edit', to: 'users#edit', as: :edit_user
 
   resources :home
   resources :about
 
-get '/:username', to: 'users#show_by_username',as: :username
-  root to: "home#index"
+  get '/:username', to: 'users#show_by_username',as: :username
+    root to: "home#index"
   
-devise_for :users, :controllers => {
-  :sessions      => "users/sessions",
-  :registrations => "users/registrations",
-  :passwords     => "users/passwords"
-}
+  devise_for :users, :controllers => {
+    :sessions      => "users/sessions",
+    :registrations => "users/registrations",
+    :passwords     => "users/passwords"
+  }
 
-get '*path', controller: 'application', action: 'render_404'
+  get '*path', controller: 'application', action: 'render_404'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

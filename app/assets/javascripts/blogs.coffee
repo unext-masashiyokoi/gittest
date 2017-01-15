@@ -13,16 +13,3 @@ blogready = ->
 #$(document).on 'page:load', ->
 #alert("sdfasdffas")
 #
-
-$(document).on 'ready page:load', ->
-  UI = new SquireUI(
-    replace: 'textarea#seditor'
-    buildPath: "/"
-    height: 300)
-  
-  if typeof $squire_description != 'undefined'
-    UI.setHTML $squire_description
-
-  $('form').submit ->
-    $('#squire_description').val(UI.getHTML()).change()
-    return

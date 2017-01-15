@@ -29,6 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :start %><br>
+<%= f.text_field :start, data: { :date_format => 'YYYY/MM/DD hh:mm' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD hh:mm:ss' %>
     <%= f.datetime_select :start, :end_year => Time.now.year + 40 %>
   </div>
   <div class="field">
