@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :issues
   resources :journals
+  resources :about
 
   resources :blogs do
     resources :comments
@@ -19,8 +20,6 @@ Rails.application.routes.draw do
         patch 'user/:id', to: 'users#update'
 
   resources :home
-  resources :about
-
   get '/:username', to: 'users#show_by_username',as: :username
     root to: "home#index"
   

@@ -12,40 +12,39 @@ blogready = ->
 
 #$(document).on 'page:load', ->
 #alert("sdfasdffas")
+#
+
+angular.module('sampleApp').controller 'TodoListCtrl', ($scope) ->
+
+  $scope.init = ->
+    $scope.list =
+      'name': 'Todoリスト1'
+      'todos': [
+        { 'description': 'todo description1' }
+        { 'description': 'todo description2' }
+      ]
 
 
-appCtrl = [
-  '$scope'
-  ($scope)->
-    $scope.textHoge = 'Lorem Ipsum'
-    $scope.textFuga = 'Lorem Ipsum'
+angular.module('sampleApp', []).controller 'AppController', ($scope) ->
+  $scope.username = ''
+  $scope.users = []
 
-    $scope.addHoge = ->
-      caret =  $scope.caretHoge.get
-      text = $scope.textHoge
-      if caret
-        former = text.slice(0,caret)
-        latter = text.slice(caret)
-        $scope.textHoge = former + 'hoge' + latter
-      else
-        $scope.textHoge += 'hoge'
-      return
-
-    $scope.addFuga = ->
-      caret =  $scope.caretFuga.get
-      text = $scope.textFuga
-      if caret
-        former = text.slice(0,caret)
-        latter = text.slice(caret)
-        $scope.textFuga = former + '\n' + 'hoge' + '\n' + latter
-      else
-        $scope.textFuga += '\n' + 'hoge'
-      return
-
+  $scope.submit = ->
+    $scope.users.push
+      username: $scope.username
+      url: '//twitter.com/' + $scope.username
     return
-]
+  return
 
-angular
-  .module 'app',['eb.caret']
-  .controller 'appCtrl', appCtrl
+
+angular.module('sampleApp').controller 'TodoListCtrl', ($scope) ->
+
+  $scope.init = ->
+    $scope.list = {
+      'name': 'Angularjsテスト中'
+      'todos': [
+        { 'description': 'todo description1' }
+        { 'description': 'todo description2' }
+      ]
+    }
 

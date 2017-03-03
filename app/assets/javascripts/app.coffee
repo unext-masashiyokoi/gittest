@@ -20,3 +20,13 @@ ready = ->
 
 $(document).ready(ready)
 $(document).ready(blogready)
+
+angular.module('sampleApp').controller 'TodoListCtrl', ($scope) ->
+
+  $scope.init = ->
+    $scope.list =
+      'name': 'Todoリスト1'
+      'todos': [
+        { 'description': 'todo description1' }
+        { 'description': 'todo description2' }
+      ]

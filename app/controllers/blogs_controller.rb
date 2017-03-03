@@ -8,13 +8,13 @@ class BlogsController < ApplicationController
   end
 
   def show
-    if @blog.draft_flg == false
+    if @blog.draft_flg == false && @blog.published_at < Time.now()
       user_blogs_id = Blog.select("id").where(user_id: @blog.user_id).published.published_before(Time.now()).order("published_at desc")
       @past_blog = past_blog(user_blogs_id)
       @future_blog = future_blog(user_blogs_id)
       @user = User.find(@blog.user_id)
     end 
-    if @blog.draft_flg == true
+    if @blog.draft_flg == true || @blog.published_at >= Time.now()
       if !user_signed_in?
         redirect_to action: 'index', status: 404
       else

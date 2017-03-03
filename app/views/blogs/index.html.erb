@@ -1,3 +1,58 @@
+<!-- app/views/templates/index.html.erb -->
+<!--<div class="container" ng-controller="TodoListCtrl" ng-init="init()">
+  <h1>Angularjsテスト中</h1>
+
+  <div class="panel panel-success">
+
+    <div class="panel-heading">
+      <span>{{list.name}}</span>
+    </div>
+
+    <form id="new_todo">
+      <div class="input-group">
+        <input type="text" id="todoDescription" class="form-control input-lg" autofocus="autofocus" maxlength="255">
+        <button class="btn btn-success btn-lg" type="submit">追加</button>
+      </div>
+    </form>
+
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="todo in list.todos">
+        <div class="todo-completed">
+          <input type="checkbox">
+        </div>
+        <div class="todo-description">
+          <span>{{todo.description}}</span>
+        </div>
+        <div class="todo-buttons pull-right">
+          <button class="btn btn-danger btn-xs pull-right" type="button">
+            <span class="glyphicon glyphicon-ban-circle"></span>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+　　　<div ng-controller="AppController">
+　　　　　<h4>入力フォーム</h4>
+　　　　　<form ng-submit="submit()">
+　　　　　　<div class="form-group">
+　　　　　　　<input type="text" class="form-control" id="username" placeholder="input test" ng-model="username">
+　　　　　　</div>
+　　　　　　　<button type="submit" class="btn btn-primary">入力</button>
+　　　　　</form>
+　　　　　<h4>一覧</h4>
+　　　　　　<li ng-repeat="user in users">
+　    　　　　<a href="{{user.url}}" target="_blank">{{user.username}}</a>
+　　　　　　</li>
+　　　</div>
+<div>
+  <%= label_tag :naem, "名前" %>
+  <%= text_field_tag :name, "", "ng-model" => "name" %>
+</div>
+
+<p>こんにちは、「{{name}}」さん。</p>
+-->
 <div class="row">
   <div class="col-xs-12">
   <%= search_form_for @q do |f| %>

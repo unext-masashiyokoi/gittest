@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   respond_to :html
-  #protect_from_forgery :except => ["destroy"]
+  protect_from_forgery :except => ["destroy"]
   def index
     #@events = Event.all.order('start asc').where("end >= ?", Time.now).where('open_range_id = 1')
     @events = Event.all.order('start desc').where('open_range_id = 1').joins(:open_range).joins(:project)
